@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Row, Col, List } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
 
+import Artists from '../Artists';
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
-import xiamiMusicLogo from './images/xiami_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
-import { connect } from 'react-redux';
 import './in_playing_list.css';
-import Artists from '../Artists';
 
 class SongItem extends Component {
   constructor(props) {
@@ -77,7 +76,6 @@ class SongItem extends Component {
 const logos = {
   qq: qqMusicLogo,
   netease: neteaseMusicLogo,
-  xiami: xiamiMusicLogo,
   kuwo: kuwoMusicLogo,
 };
 

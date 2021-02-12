@@ -21,7 +21,6 @@ import ArtistLinks from './ArtistLinks';
 import MVIcon from './MVIcon';
 import PlayingList from './PlayingList';
 import { toMinAndSec } from '../utils/time_converter';
-import { musicPlayer } from '../config';
 import { buildSongLink } from '../utils/link';
 
 const playModeIcons = {
@@ -250,7 +249,15 @@ class Player extends Component {
     const progress = toMinAndSec(this.state.playProgress);
     const total = toMinAndSec(this.state.songDuration);
     return (
-      <div style={styles.player} id="music-player">
+      <div style={{
+          position: 'fixed',
+          bottom: 0,
+          padding: '8px 0',
+          width: '100%',
+          backgroundColor: '#222',
+          color: 'white',
+        }}
+      >
         <audio src={this.state.songSource}
           ref={(audio) => { this.audio = audio; }}
         />
@@ -411,12 +418,7 @@ class Player extends Component {
 
 const styles = {
   player: {
-    position: 'fixed',
-    bottom: 0,
-    padding: '8px 0',
-    width: '100%',
-    backgroundColor: musicPlayer.background,
-    color: musicPlayer.color,
+    
   },
 };
 const platforms = {
