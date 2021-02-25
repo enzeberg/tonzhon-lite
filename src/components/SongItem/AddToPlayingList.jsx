@@ -19,14 +19,14 @@ class AddToPlayingList extends Component {
 
   render() {
     return (
-      <a onClick={this.handleClick} title="添加到播放列表">
-        <PlusOutlined
-          style={{
-            fontSize: 20,
-            display: 'block',
-          }}
-        />
-      </a>
+      <PlusOutlined
+        style={{
+          fontSize: 20,
+          display: 'block',
+        }}
+        onClick={this.handleClick}
+        title="添加到播放列表"
+      />
     );
   }
 }

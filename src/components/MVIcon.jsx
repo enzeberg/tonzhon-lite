@@ -8,6 +8,7 @@ export default function MVIcon({ platform, id, color }) {
     <a
       href={buildMvLink(platform, id)}
       target="_blank"
+      rel="noreferrer"
       title="MV"
     >
       <MdOndemandVideo

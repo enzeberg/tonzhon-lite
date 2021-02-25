@@ -7,9 +7,9 @@ import Wrapper from './Wrapper';
 import OperatingBarOfSongList from './OperatingBarOfSongList';
 
 class SearchResult extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   onPageChange = (page) => {
     const { provider, keyword, onResultResponded } = this.props;

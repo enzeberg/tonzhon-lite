@@ -7,9 +7,9 @@ import xiamiMusicLogo from './images/xiami_32.ico';
 import kuwoMusicLogo from './images/kuwo_32.ico';
 
 class Wrapper extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     const { provider } = this.props;
@@ -22,7 +22,7 @@ class Wrapper extends Component {
       >
         <Row type="flex" align="middle" style={{ marginBottom: '10px' }}>
           <Col span={10}>
-            <a href={link} target="_blank" alt={provider}>
+            <a href={link} target="_blank" rel="noreferrer" alt={provider}>
               <img src={logo} alt="" />
             </a>
           </Col>

@@ -7,12 +7,11 @@ import Artists from '../Artists';
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
-import './in_playing_list.css';
 
 class SongItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   changeCurrentSong = () => {
     const index = this.props.playingList.findIndex(song =>
@@ -45,14 +44,14 @@ class SongItem extends Component {
         }
         style={{ border: 'none', padding: '6px 10px' }}
         extra={
-          <a onClick={this.deleteFromPlaylist} className="delete-btn">
-            <DeleteOutlined
-              style={{
-                fontSize: 18,
-                verticalAlign: 'middle'
-              }}
-            />
-          </a>
+          <DeleteOutlined
+            style={{
+              fontSize: 18,
+              verticalAlign: 'middle',
+              color: 'white',
+            }}
+            onClick={this.deleteFromPlaylist}
+          />
         }
       >
         <Row type="flex" align="middle"

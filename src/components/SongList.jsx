@@ -4,9 +4,9 @@ import { List } from 'antd';
 import SongItem from './SongItem';
 
 class SongList extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (

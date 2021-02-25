@@ -16,9 +16,9 @@ import {
 } from '../../utils/link';
 
 class SongItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   changeCurrentSong = () => {
     const index = this.props.playingList.findIndex(song =>
@@ -44,6 +44,7 @@ class SongItem extends Component {
                 // + `\n${song.hasCopyright ? '' : '（此歌曲在该平台可能存在版权问题。）'}`
               }
               target="_blank"
+              rel="noreferrer"
               // className={anchorClass}
             >
               <span>{song.name}</span>
@@ -61,7 +62,9 @@ class SongItem extends Component {
           <Col span={6} className="nowrap">
             <a
               href={buildAlbumLink(song.platform, song.album.id)}
-              target="_blank" title={song.album.name}
+              target="_blank"
+              rel="noreferrer"
+              title={song.album.name}
             >
               {song.album.name}
             </a>
@@ -77,20 +80,17 @@ class SongItem extends Component {
             }
           </Col>
           <Col span={1}>
-            <a onClick={this.changeCurrentSong}
+            <PlayCircleOutlined
+              style={{
+                fontSize: 20,
+                display: 'block',
+              }}
+              onClick={this.changeCurrentSong}
               className={
-                currentSong && currentSong.originalId === song.originalId
-                  && currentSong.platform === song.platform
+                currentSong && currentSong.newId === song.newId
                   ? 'play-btn playing' : 'play-btn'
               }
-            >
-              <PlayCircleOutlined
-                style={{
-                  fontSize: 20,
-                  display: 'block',
-                }}
-              />
-            </a>
+            />
           </Col>
           <Col span={1}>
             <AddToPlayingList data={song} />

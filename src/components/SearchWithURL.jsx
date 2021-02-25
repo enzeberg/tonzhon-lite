@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import querystring from 'querystring';
 
 class SearchWithURL extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     const { location, keywordFromStore } = this.props;

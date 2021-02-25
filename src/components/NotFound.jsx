@@ -1,4 +1,6 @@
 import React from 'react';
-export default () => (
+const notFound = () => (
   <h1>Oh, 404...</h1>
 );
+
+export default notFound;

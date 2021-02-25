@@ -18,9 +18,9 @@ import './App.less';
 const { Header, Content } = Layout;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     let { searchStatus, searchResults } = this.props;

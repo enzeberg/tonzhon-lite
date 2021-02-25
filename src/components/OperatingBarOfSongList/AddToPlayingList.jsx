@@ -10,9 +10,9 @@ notification.config({
 });
 
 class AddToPlayingList extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   handleClick = () => {
     this.props.addToPlaylist(this.props.data);

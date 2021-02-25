@@ -306,6 +306,7 @@ class Player extends Component {
                         }
                         style={{ color: 'white', marginRight: 4, fontSize: 16 }}
                         target="_blank"
+                        rel="noreferrer"
                         title={currentSong.name}
                       >
                         <strong>{currentSong.name}</strong>
@@ -415,16 +416,9 @@ class Player extends Component {
   }
 }
 
-
-const styles = {
-  player: {
-    
-  },
-};
 const platforms = {
   qq: 'QQ音乐',
   netease: '网易云音乐',
-  xiami: '虾米音乐',
   kuwo: '酷我音乐',
 };
 

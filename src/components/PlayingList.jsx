@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import ItemInPlaylist from './SongItem/in_playing_list';
 
 class PlayingList extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
