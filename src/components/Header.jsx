@@ -36,7 +36,7 @@ class Header extends Component {
           <SearchBar />
         </Col>
         <Col span={2} style={{ textAlign: 'right' }}>
-          <a href="https://github.com/enzeberg/tonzhon-music"
+          <a href="https://github.com/enzeberg/tonzhon-lite"
             target="blank"
           >
             <GithubOutlined style={{ fontSize: 'large' }} />
