@@ -4,7 +4,7 @@ if (process.env.NODE_ENV === 'development') {
 } else if (process.env.NODE_ENV === 'production') {
   serverUrl = '/';
 }
-const themeColor = '#EA7030';
+const themeColor = 'orange';
 
 export {
   serverUrl,
