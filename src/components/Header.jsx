@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { GithubOutlined } from '@ant-design/icons';
 
@@ -28,19 +28,25 @@ class Header extends Component {
           </Link>
         </Col>
         <Col span={4}>
-          <Link to="/netease-playlist/1" style={{ fontSize: 16 }}>
+          <Link to="/netease-playlist/6774517990" style={{ fontSize: 16 }}>
             网易歌单
           </Link>
         </Col>
-        <Col span={12}>
+        <Col span={10}>
           <SearchBar />
         </Col>
-        <Col span={2} style={{ textAlign: 'right' }}>
-          <a href="https://github.com/enzeberg/tonzhon-lite"
+        <Col span={4} style={{ textAlign: 'right' }}>
+          {/* <a href="https://github.com/enzeberg/tonzhon-lite"
             target="blank"
           >
             <GithubOutlined style={{ fontSize: 'large' }} />
-          </a>
+          </a> */}
+          <Button icon={<GithubOutlined style={{ fontSize: 'large' }} />}
+            href="https://github.com/enzeberg/tonzhon-lite"
+            target="_blank"
+          >
+            GitHub
+          </Button>
         </Col>
       </Row>
     );

@@ -9,7 +9,7 @@ class Hot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      platform: 'qq',
+      platform: 'kuwo',
     };
   }
 
@@ -22,23 +22,22 @@ class Hot extends Component {
   render() {
     return (
         <Layout className="white-card">
-          <Sider style={{ background: 'none', marginRight: 20 }}
-          >
+          <Sider style={{ background: 'none', marginRight: 20 }}>
             <h2>热歌榜</h2>
             <Menu
-              defaultSelectedKeys={ ['qq'] }
+              defaultSelectedKeys={ ['kuwo'] }
               mode="inline"
-              defaultOpenKeys={['qq']}
+              defaultOpenKeys={['kuwo']}
               onClick={this.changePlatform}
             >
               {/* <Menu.Item key="netease">
                 网易云音乐
               </Menu.Item> */}
-              <Menu.Item key="qq">
-                QQ音乐
-              </Menu.Item>
               <Menu.Item key="kuwo">
                 酷我音乐
+              </Menu.Item>
+              <Menu.Item key="qq">
+                QQ音乐
               </Menu.Item>
             </Menu>
           </Sider>

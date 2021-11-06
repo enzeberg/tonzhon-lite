@@ -3,7 +3,6 @@ import { Row, Col } from 'antd';
 
 import neteaseMusicLogo from './images/netease_32.ico';
 import qqMusicLogo from './images/qq_32.ico';
-import xiamiMusicLogo from './images/xiami_32.ico';
 import kuwoMusicLogo from './images/kuwo_32.ico';
 
 class Wrapper extends Component {
@@ -42,19 +41,15 @@ class Wrapper extends Component {
 const providers = {
   netease: {
     logo: neteaseMusicLogo,
-    link: 'https://music.163.com/'
+    link: 'https://music.163.com'
   },
   qq: {
     logo: qqMusicLogo,
-    link: 'https://y.qq.com/'
-  },
-  xiami: {
-    logo: xiamiMusicLogo,
-    link: 'https://www.xiami.com/'
+    link: 'https://y.qq.com'
   },
   kuwo: {
     logo: kuwoMusicLogo,
-    link: 'http://www.kuwo.cn',
+    link: 'https://www.kuwo.cn',
   },
 };
 
