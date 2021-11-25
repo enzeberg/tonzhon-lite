@@ -39,9 +39,10 @@ class App extends Component {
             style={{
               position: 'fixed',
               width: '100%',
+              height: 50,
               zIndex: 1040,
               // borderBottom: '1px solid #DBDBDB',
-              padding: '8px 0',
+              padding: '6px 0',
               boxShadow: '0 1px 3px rgba(26,26,26,.1)',
             }}
           >
@@ -51,7 +52,7 @@ class App extends Component {
           <Content>
             <div className="container"
               style={{
-                marginTop: 59,
+                marginTop: 60,
                 marginBottom: 74,
                 minHeight: 800,
               }}

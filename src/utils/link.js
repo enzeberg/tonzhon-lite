@@ -1,6 +1,6 @@
 const qq = 'https://y.qq.com/n/yqq/';
 const netease = 'https://music.163.com/#/';
-const kuwo = 'http://www.kuwo.cn';
+const kuwo = 'https://www.kuwo.cn/';
 
 function buildSongLink(platform, id) {
   switch(platform) {
@@ -9,7 +9,7 @@ function buildSongLink(platform, id) {
     case 'netease':
       return `${netease}song?id=${id}`;
     case 'kuwo':
-      return `${kuwo}/play_detail/${id}`;
+      return `${kuwo}play_detail/${id}`;
     default:
       return;
   }
@@ -33,7 +33,7 @@ function buildArtistLink(platform, id) {
     case 'netease':
       return `${netease}artist?id=${id}`;
     case 'kuwo':
-      return `${kuwo}/singer_detail/${id}`;
+      return `${kuwo}singer_detail/${id}`;
     default:
       return;
   }
@@ -46,7 +46,7 @@ function buildAlbumLink(platform, id) {
     case 'netease':
       return `${netease}album?id=${id}`;
     case 'kuwo':
-      return `${kuwo}/album_detail/${id}`;
+      return `${kuwo}album_detail/${id}`;
     default:
       return;
   }

@@ -21,6 +21,7 @@ class Header extends Component {
                 display: 'inline',
                 color: themeColor,
                 fontWeight: 360,
+                fontSize: 'x-large',
               }}
             >
               Tonzhon Lite

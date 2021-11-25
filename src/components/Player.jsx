@@ -249,7 +249,8 @@ class Player extends Component {
     const progress = toMinAndSec(this.state.playProgress);
     const total = toMinAndSec(this.state.songDuration);
     return (
-      <div style={{
+      <div
+        style={{
           position: 'fixed',
           bottom: 0,
           padding: '8px 0',
@@ -331,14 +332,16 @@ class Player extends Component {
                         />
                       }
                     </Col>
-                    <Col span={5} style={{
-                        fontSize: 'small', fontWeight: 'lighter',
-                        color: 'rgb(230, 230, 230)',
+                    <Col span={5}
+                      style={{
+                        fontSize: 'small',
+                        fontWeight: 'lighter',
                       }}
+                      className="gray-in-player"
                     >
                       {`来自${platforms[currentSong.platform]}`}
                     </Col>
-                    <Col span={4} style={{ textAlign: 'right' }}>
+                    <Col span={4} className="gray-in-player" style={{ textAlign: 'right' }}>
                       {
                         getMusicUrlStatus === 'failed' ? '加载失败' :
                           (
@@ -350,7 +353,8 @@ class Player extends Component {
                   </>
               }
             </Row>
-            <Slider min={0}
+            <Slider
+              min={0}
               max={
                 this.state.songDuration ? parseInt(this.state.songDuration) : 0
               }
@@ -373,9 +377,7 @@ class Player extends Component {
             <Tooltip
               title={modeExplanations[this.state.playMode]}
             >
-              <a
-                onClick={this.switchPlayMode}
-              >
+              <a onClick={this.switchPlayMode}>
                 {
                   playModeIcons[this.state.playMode]
                 }
