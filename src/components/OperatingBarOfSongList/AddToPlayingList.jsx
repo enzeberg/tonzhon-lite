@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { notification, Button } from 'antd';
+import { message, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
-
-notification.config({
-  placement: 'bottomRight',
-  bottom: 50,
-  duration: 2,
-});
 
 class AddToPlayingList extends Component {
   // constructor(props) {
@@ -16,9 +10,7 @@ class AddToPlayingList extends Component {
 
   handleClick = () => {
     this.props.addToPlaylist(this.props.data);
-    notification.open({
-      message: '已添加至播放列表',
-    });
+    message.success('已添加到播放列表');
   }
 
   render() {

@@ -9,7 +9,7 @@ import {
   DownloadOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons';
-import { Row, Col, Slider, Button, Tooltip, notification } from 'antd';
+import { Row, Col, Slider, Button, Tooltip, message } from 'antd';
 import {
   MdRepeat as LoopIcon,
   MdRepeatOne as SingleIcon,
@@ -54,7 +54,6 @@ class Player extends Component {
     this.changePlayProgress = this.changePlayProgress.bind(this);
     this.onVolumeBtnClick = this.onVolumeBtnClick.bind(this);
     this.changeVolume = this.changeVolume.bind(this);
-    this.playNext = this.playNext.bind(this);
     this.switchPlayMode = this.switchPlayMode.bind(this);
     this.onPlayingListBtnClick = this.onPlayingListBtnClick.bind(this);
   }
@@ -138,17 +137,20 @@ class Player extends Component {
       this.pause();
     }
   }
+
   getSongSourceAndPlay(song) {
     this.getSongSource(song.platform, song.originalId, () => {
       this.play();
     });
   }
+
   play() {
     this.audio.play();
     this.setState({
       playStatus: 'playing',
     });
   }
+  
   pause() {
     this.audio.pause();
     this.setState({
@@ -187,10 +189,9 @@ class Player extends Component {
   }
 
   afterLoadingFailure() {
-    notification.open({
-      message: '加载失败，已跳过',
-    });
+    message.error('加载失败');
     this.playNext('forward');
+    message.info('已跳过');
   }
 
   changePlayProgress(value) {

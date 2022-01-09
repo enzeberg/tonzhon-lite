@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { notification } from 'antd';
+import { message } from 'antd';
 import { connect } from 'react-redux';
 
 class AddToPlayingList extends Component {
@@ -12,9 +12,7 @@ class AddToPlayingList extends Component {
   handleClick() {
     const { data } = this.props;
     this.props.addToPlayingList(data);
-    notification.open({
-      message: '已添加到播放列表',
-    });
+    message.success('已添加到播放列表');
   }
 
   render() {
