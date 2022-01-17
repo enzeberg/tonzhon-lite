@@ -4,11 +4,12 @@ import { PlusOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
 class AddToPlayingList extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  handleClick = () => {
+  handleClick() {
     this.props.addToPlaylist(this.props.data);
     message.success('已添加到播放列表');
   }

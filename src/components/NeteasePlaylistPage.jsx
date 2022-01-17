@@ -11,6 +11,7 @@ const { Search } = Input;
 function NeteasePlaylistPage(props) {
   const playlistIdFromUrl = props.match.params.playlistId;
   const [playlistId, setPlaylistId] = useState(playlistIdFromUrl || '');
+  
   const onSearch = (value) => {
     setPlaylistId(value);
     props.history.replace(`/netease-playlist/${value}`);

@@ -13,7 +13,10 @@ class PlayingList extends Component {
   render() {
     return (
       <div style={styles.wrapper}>
-        <Row type="flex" align="middle" justify="space-between"
+        <Row
+          type="flex"
+          align="middle"
+          justify="space-between"
           style={styles.header}
         >
           <Col span={20}>播放列表</Col>

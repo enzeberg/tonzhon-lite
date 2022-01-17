@@ -1,41 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Row, Col } from 'antd';
 
 import neteaseMusicLogo from './images/netease_32.ico';
 import qqMusicLogo from './images/qq_32.ico';
 import kuwoMusicLogo from './images/kuwo_32.ico';
 
-class Wrapper extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
-  render() {
-    const { provider } = this.props;
-    const { logo, link } = providers[provider];
-    return (
-      <div className="white-card"
-        style={{
-          marginTop: '10px',
-        }}
-      >
-        <Row type="flex" align="middle" style={{ marginBottom: '10px' }}>
-          <Col span={10}>
-            <a href={link} target="_blank" rel="noreferrer" alt={provider}>
-              <img src={logo} alt="" />
-            </a>
-          </Col>
-          <Col span={8}>
-            {this.props.pagination}
-          </Col>
-          <Col span={6} style={{ textAlign: 'right' }}>
-            {this.props.operatingBar}
-          </Col>
-        </Row>
-        {this.props.children}
-      </div>
-    );
-  }
+function Wrapper(props) {
+  const { provider, pagination, operatingBar } = props;
+  const { logo, link } = providers[provider];
+  return (
+    <div className="white-card"
+      style={{
+        marginTop: '10px',
+      }}
+    >
+      <Row type="flex" align="middle" style={{ marginBottom: '10px' }}>
+        <Col span={10}>
+          <a href={link} target="_blank" rel="noreferrer" alt={provider}>
+            <img src={logo} alt="" />
+          </a>
+        </Col>
+        <Col span={8}>
+          {pagination}
+        </Col>
+        <Col span={6} style={{ textAlign: 'right' }}>
+          {operatingBar}
+        </Col>
+      </Row>
+      {props.children}
+    </div>
+  );
 }
 
 const providers = {

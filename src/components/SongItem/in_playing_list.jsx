@@ -9,11 +9,14 @@ import qqMusicLogo from './images/qq_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
 
 class SongItem extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
 
-  changeCurrentSong = () => {
+    this.changeCurrentSong = this.changeCurrentSong.bind(this);
+    this.deleteFromPlayingList = this.deleteFromPlayingList.bind(this);
+  }
+
+  changeCurrentSong() {
     const index = this.props.playingList.findIndex(song =>
       song.newId === this.props.song.newId);
     if (index === -1) {
@@ -24,7 +27,7 @@ class SongItem extends Component {
     }
   }
 
-  deleteFromPlaylist = (e) => {
+  deleteFromPlayingList(e) {
     e.stopPropagation();
     const index = this.props.playingList.findIndex(song =>
                   song.newId === this.props.song.newId);
@@ -50,7 +53,7 @@ class SongItem extends Component {
               verticalAlign: 'middle',
               color: 'white',
             }}
-            onClick={this.deleteFromPlaylist}
+            onClick={this.deleteFromPlayingList}
           />
         }
       >
@@ -87,9 +90,6 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    addToPlaylist: (song) => {
-      dispatch({ type: 'ADD_TO_PLAYING_LIST', data: song });
-    },
     updatePlayIndex: (index) => {
       dispatch({ type: 'UPDATE_PLAY_INDEX', data: index });
     },

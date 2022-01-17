@@ -10,17 +10,16 @@ import ArtistLinks from '../ArtistLinks';
 import MVIcon from '../MVIcon';
 import AddToPlayingList from './AddToPlayingList';
 import './index.css';
-import {
-  buildSongLink,
-  buildAlbumLink,
-} from '../../utils/link';
+import { buildSongLink, buildAlbumLink } from '../../utils/link';
 
 class SongItem extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
 
-  changeCurrentSong = () => {
+    this.changeCurrentSong = this.changeCurrentSong.bind(this);
+  }
+
+  changeCurrentSong() {
     const index = this.props.playingList.findIndex(song =>
       song.newId === this.props.song.newId);
     if (index === -1) {

@@ -7,11 +7,12 @@ import Wrapper from './Wrapper';
 import OperatingBarOfSongList from './OperatingBarOfSongList';
 
 class SearchResult extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.onPageChange = this.onPageChange.bind(this);
+  }
 
-  onPageChange = (page) => {
+  onPageChange(page) {
     const { provider, keyword, onResultResponded } = this.props;
     fetch(`/api/search?provider=${provider}&keyword=${keyword}&page=${page}`)
       .then(res => res.json())
@@ -35,7 +36,8 @@ class SearchResult extends Component {
     // }
 
     return (
-      <Wrapper provider={provider}
+      <Wrapper
+        provider={provider}
         operatingBar={
           <OperatingBarOfSongList songs={result.data.songs} />
         }

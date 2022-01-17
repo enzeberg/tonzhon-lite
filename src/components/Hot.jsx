@@ -11,9 +11,11 @@ class Hot extends Component {
     this.state = {
       platform: 'netease',
     };
+    
+    this.changePlatform = this.changePlatform.bind(this);
   }
 
-  changePlatform = ({item, key}) => {
+  changePlatform({item, key}) {
     this.setState({
       platform: key,
     });

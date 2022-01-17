@@ -9,9 +9,12 @@ const Search = Input.Search;
 class SearchBar extends Component {
   constructor(props) {
     super(props);
+
+    this.onSearch = this.onSearch.bind(this);
+    this.onSelect = this.onSelect.bind(this);
   }
 
-  onSearch = (keyword) => {
+  onSearch(keyword) {
     if (keyword !== '' &&
       keyword !== this.props.keyword) {
       this.props.updateSearchKeyword(keyword);
@@ -19,7 +22,7 @@ class SearchBar extends Component {
     }
   }
 
-  onSelect = ({ key }) => {
+  onSelect({ key }) {
     let inputNode = document.querySelector('input#searchInput');
     // inputNode.setAttribute('value', key);
     inputNode.value = key;

@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-  buildArtistLink,
-} from '../utils/link';
+import { buildArtistLink } from '../utils/link';
 
-export default function ArtistLinks({ platform, artists, fontColor }) {
+function ArtistLinks({ platform, artists, fontColor }) {
   return artists.map((artist, index) => {
     return (
       <a
@@ -19,4 +17,6 @@ export default function ArtistLinks({ platform, artists, fontColor }) {
       </a>
     );
   });
-};
+}
+
+export default ArtistLinks;

@@ -50,6 +50,7 @@ class Player extends Component {
       playProgress: 0,
       playingListVisible: false,
     };
+    
     this.playOrPause = this.playOrPause.bind(this);
     this.changePlayProgress = this.changePlayProgress.bind(this);
     this.onVolumeBtnClick = this.onVolumeBtnClick.bind(this);

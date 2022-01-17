@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-export default function Artists ({ artists }) {
+function Artists({ artists }) {
   return artists.map((artist, index) => {
       return (
         <Fragment key={artist.id}>
@@ -9,4 +9,6 @@ export default function Artists ({ artists }) {
         </Fragment>
       );
     });
-};
+}
+
+export default Artists;
