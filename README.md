@@ -10,11 +10,10 @@
 - 搜索
  (支持使用查询字符串搜索，如: [http://lite.tonzhon.com/search?keyword=Iron%20Man](http://lite.tonzhon.com/search?keyword=Iron%20Man))
 - 播放
-- 下载
-- 加载网易云音乐的歌单
+- 下载歌曲
+- 导入网易云音乐的**完整**歌单
  （如：[http://lite.tonzhon.com/netease-playlist/5132177936](http://lite.tonzhon.com/netease-playlist/5132177936))
-- 热歌榜（包括QQ音乐、网易云音乐和酷我音乐）
-- 记录搜索历史
+- 热歌榜（包括网易云音乐、酷我音乐和QQ音乐）
 
 ## 使用
     git clone https://github.com/enzeberg/tonzhon-lite.git
