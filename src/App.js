@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Layout, Spin } from 'antd';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import TheHeader from './components/Header';
+import TheHeader from './components/TheHeader';
 // import TheFooter from './components/Footer';
 import SearchResult from './components/SearchResult';
 import SearchWithURL from './components/SearchWithURL';
@@ -15,7 +14,7 @@ import Hot from './components/Hot';
 import NeteasePlaylistPage from './components/NeteasePlaylistPage';
 import './App.less';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 class App extends Component {
   // constructor(props) {
@@ -34,21 +33,7 @@ class App extends Component {
           <Switch>
             <Route path="/search" component={SearchWithURL} />
           </Switch>
-
-          <Header
-            style={{
-              position: 'fixed',
-              width: '100%',
-              height: 50,
-              zIndex: 2,
-              // borderBottom: '1px solid #DBDBDB',
-              padding: '6px 0',
-              boxShadow: '0 1px 3px rgba(26,26,26,.1)',
-            }}
-          >
-            <TheHeader />
-          </Header>
-
+          <TheHeader />
           <Content>
             <div className="container"
               style={{
@@ -83,12 +68,11 @@ class App extends Component {
                           {
                             filtered.length === 0 && searchStatus === 'done' &&
                             <div className="white-card">
-                              抱歉，未搜索到相关内容。
+                              未搜索到相关歌曲。
                             </div>
                           }
                           {
-                            searchStatus === 'searching' &&
-                            <LoadingOutlined />
+                            searchStatus === 'searching' && <Spin />
                           }
                         </>
                       );
@@ -98,7 +82,7 @@ class App extends Component {
                 <Route path="/netease-playlist/:playlistId"
                   component={NeteasePlaylistPage}
                 />
-                <Route path="/*" render={NotFound} />
+                <Route path="/*" component={NotFound} />
               </Switch>
             </div>
           </Content>

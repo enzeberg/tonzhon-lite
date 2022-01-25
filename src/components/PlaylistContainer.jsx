@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Row, Col, Spin } from 'antd';
 
 import SongList from './SongList';
 import OperatingBarOfSongList from './OperatingBarOfSongList';
@@ -67,7 +66,7 @@ class PlaylistContainer extends Component {
         </Row>
         {
           this.state.loading
-          ? <LoadingOutlined />
+          ? <Spin />
           : (
             songs.length > 0
             ? <SongList songs={songs} />

@@ -23,9 +23,7 @@ function NeteasePlaylistPage(props) {
         <Sider style={{ background: 'none', marginRight: 20 }}>
           <h2>网易歌单</h2>
           <Search
-            enterButton={
-              <RightOutlined />
-            }
+            enterButton={<RightOutlined />}
             onSearch={onSearch}
             placeholder="此处粘贴 Playlist ID"
           />

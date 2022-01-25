@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 
 import SongList from './SongList';
 import OperatingBarOfSongList from './OperatingBarOfSongList';
@@ -56,9 +56,9 @@ class HotList extends Component {
           }
         </div>
         {
-          this.state.loading ?
-            <LoadingOutlined /> :
-            <SongList songs={songs} />
+          this.state.loading
+            ? <Spin />
+            : <SongList songs={songs} />
         }
       </>
     );
