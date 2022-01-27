@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Layout, Spin } from 'antd';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 import TheHeader from './components/TheHeader';
 // import TheFooter from './components/Footer';
@@ -16,84 +17,85 @@ import './App.less';
 
 const { Content } = Layout;
 
-class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
-  render() {
-    let { searchStatus, searchResults } = this.props;
-    return (
-      <BrowserRouter>
-        <Layout
+function App(props) {
+  useScrollbarResetter();
+  let { searchStatus, searchResults } = props;
+  return (
+    <Layout
+      style={{
+        backgroundColor: '#f7f7f7',
+      }}
+    >
+      <Switch>
+        <Route path="/search" component={SearchWithURL} />
+      </Switch>
+      <TheHeader />
+      <Content>
+        <div className="container"
           style={{
-            backgroundColor: '#f7f7f7',
+            marginTop: 60,
+            marginBottom: 74,
+            minHeight: 800,
           }}
         >
           <Switch>
-            <Route path="/search" component={SearchWithURL} />
+            <Route exact path="/" component={Hot} />
+            <Route path="/search"
+              render={
+                () => {
+                  const filtered = Object.keys(searchResults)
+                    .filter(key => {
+                      const result = searchResults[key];
+                      return result.searchSuccess &&
+                        result.data.totalCount > 0;
+                    });
+                  return (
+                    <>
+                      <TopSongs />
+                      {
+                        filtered.map((key) => (
+                          <SearchResult
+                            result={searchResults[key]}
+                            provider={key}
+                            key={key}
+                          />
+                        ))
+                      }
+                      {
+                        filtered.length === 0 && searchStatus === 'done' &&
+                        <div className="white-card">
+                          未搜索到相关歌曲。
+                        </div>
+                      }
+                      {
+                        searchStatus === 'searching' && <Spin />
+                      }
+                    </>
+                  );
+                }
+              }
+            />
+            <Route path="/netease-playlist/:playlistId"
+              component={NeteasePlaylistPage}
+            />
+            <Route path="/*" component={NotFound} />
           </Switch>
-          <TheHeader />
-          <Content>
-            <div className="container"
-              style={{
-                marginTop: 60,
-                marginBottom: 74,
-                minHeight: 800,
-              }}
-            >
-              <Switch>
-                <Route exact path="/" component={Hot} />
-                <Route path="/search"
-                  render={
-                    () => {
-                      const filtered = Object.keys(searchResults)
-                        .filter(key => {
-                          const result = searchResults[key];
-                          return result.searchSuccess &&
-                            result.data.totalCount > 0;
-                        });
-                      return (
-                        <>
-                          <TopSongs />
-                          {
-                            filtered.map((key) => (
-                              <SearchResult
-                                result={searchResults[key]}
-                                provider={key}
-                                key={key}
-                              />
-                            ))
-                          }
-                          {
-                            filtered.length === 0 && searchStatus === 'done' &&
-                            <div className="white-card">
-                              未搜索到相关歌曲。
-                            </div>
-                          }
-                          {
-                            searchStatus === 'searching' && <Spin />
-                          }
-                        </>
-                      );
-                    }
-                  }
-                />
-                <Route path="/netease-playlist/:playlistId"
-                  component={NeteasePlaylistPage}
-                />
-                <Route path="/*" component={NotFound} />
-              </Switch>
-            </div>
-          </Content>
-          {/* <Footer style={{ marginBottom: 80 }}>
-            <TheFooter />
-          </Footer> */}
-          <Player />
-        </Layout>
-      </BrowserRouter>
-    );
-  }
+        </div>
+      </Content>
+      {/* <Footer style={{ marginBottom: 80 }}>
+          <TheFooter />
+        </Footer> */}
+      <Player />
+    </Layout>
+  );
+}
+
+function useScrollbarResetter() {
+  const { key } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [key]);
+  return null;
 }
 
 function mapStateToProps(state) {
