@@ -51,11 +51,11 @@ class Player extends Component {
       playingListVisible: false,
     };
     
-    this.playOrPause = this.playOrPause.bind(this);
-    this.changePlayProgress = this.changePlayProgress.bind(this);
+    this.onCentralBtnClick = this.onCentralBtnClick.bind(this);
+    this.onPlayProgressSliderChange = this.onPlayProgressSliderChange.bind(this);
     this.onVolumeBtnClick = this.onVolumeBtnClick.bind(this);
-    this.changeVolume = this.changeVolume.bind(this);
-    this.switchPlayMode = this.switchPlayMode.bind(this);
+    this.onVolumeSliderChange = this.onVolumeSliderChange.bind(this);
+    this.onPlayModeBtnClick = this.onPlayModeBtnClick.bind(this);
     this.onPlayingListBtnClick = this.onPlayingListBtnClick.bind(this);
   }
 
@@ -125,7 +125,7 @@ class Player extends Component {
     }
   }
 
-  playOrPause() {
+  onCentralBtnClick() {
     const { playStatus } = this.state;
     if (playStatus === 'pausing') {
       if (this.state.songSource) {
@@ -195,7 +195,7 @@ class Player extends Component {
     message.info('已跳过');
   }
 
-  changePlayProgress(value) {
+  onPlayProgressSliderChange(value) {
     this.audio.currentTime = value;
     this.setState({ playProgress: value });
   }
@@ -210,7 +210,7 @@ class Player extends Component {
     }
   }
 
-  changeVolume(value) {
+  onVolumeSliderChange(value) {
     this.audio.volume = value;
     this.setState({ volume: value });
     localStorage.setItem('volume', value);
@@ -230,7 +230,7 @@ class Player extends Component {
     }
   }
 
-  switchPlayMode() {
+  onPlayModeBtnClick() {
     const i = playModes.indexOf(this.state.playMode);
     const mode = playModes[i + 1] || playModes[0];
     localStorage.setItem('playMode', mode);
@@ -267,12 +267,16 @@ class Player extends Component {
 
         <Row type="flex" align="middle" className="container" justify="space-around">
           <Col span={4}>
-            <Button ghost shape="circle" icon={<StepBackwardOutlined />}
+            <Button ghost
+              shape="circle"
+              icon={<StepBackwardOutlined />}
               onClick={() => this.playNext('backward')}
             />
-            <Button ghost shape="circle" size="large"
-              onClick={this.playOrPause}
-              style={{ margin: '0 10px' }}
+            <Button ghost
+              shape="circle"
+              size="large"
+              disabled={!currentSong}
+              onClick={this.onCentralBtnClick}
               icon={
                 getMusicUrlStatus === 'notYet' ? <CaretRightOutlined />
                   : (
@@ -288,9 +292,11 @@ class Player extends Component {
                       )
                   )
               }
-              disabled={!currentSong}
+              style={{ margin: '0 10px' }}
             />
-            <Button ghost shape="circle" icon={<StepForwardOutlined />}
+            <Button ghost
+              shape="circle"
+              icon={<StepForwardOutlined />}
               onClick={() => this.playNext('forward')}
             />
           </Col>
@@ -304,13 +310,16 @@ class Player extends Component {
                     <Col span={7} className="nowrap">
                       <a
                         href={
-                          buildSongLink(currentSong.platform,
-                            currentSong.originalId)
+                          buildSongLink(currentSong.platform, currentSong.originalId)
                         }
-                        style={{ color: 'white', marginRight: 4, fontSize: 16 }}
                         target="_blank"
                         rel="noreferrer"
                         title={currentSong.name}
+                        style={{
+                          color: 'white',
+                          marginRight: 4,
+                          fontSize: 16,
+                        }}
                       >
                         <strong>{currentSong.name}</strong>
                       </a>
@@ -335,11 +344,11 @@ class Player extends Component {
                       }
                     </Col>
                     <Col span={5}
+                      className="gray-in-player"
                       style={{
                         fontSize: 'small',
                         fontWeight: 'lighter',
                       }}
-                      className="gray-in-player"
                     >
                       {`来自${platforms[currentSong.platform]}`}
                     </Col>
@@ -362,13 +371,16 @@ class Player extends Component {
               }
               value={this.state.playProgress}
               tipFormatter={(value) => toMinAndSec(value)}
-              onChange={this.changePlayProgress}
+              onChange={this.onPlayProgressSliderChange}
               disabled={!this.state.songSource}
               style={{ margin: '8px 0' }}
             />
           </Col>
           <Col span={1}>
-            <Button icon={<DownloadOutlined />} ghost shape="circle"
+            <Button
+              icon={<DownloadOutlined />}
+              ghost
+              shape="circle"
               href={this.state.songSource}
               target="_blank"
               download
@@ -379,7 +391,7 @@ class Player extends Component {
             <Tooltip
               title={modeExplanations[this.state.playMode]}
             >
-              <a onClick={this.switchPlayMode}>
+              <a onClick={this.onPlayModeBtnClick}>
                 {
                   playModeIcons[this.state.playMode]
                 }
@@ -398,9 +410,11 @@ class Player extends Component {
                 </a>
               </Col>
               <Col span={20}>
-                <Slider min={0} max={1} step={0.01}
+                <Slider min={0}
+                  max={1}
+                  step={0.01}
                   defaultValue={this.state.volume}
-                  onChange={this.changeVolume}
+                  onChange={this.onVolumeSliderChange}
                 />
               </Col>
             </Row>

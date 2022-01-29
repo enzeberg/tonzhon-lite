@@ -7,7 +7,7 @@ import kuwoMusicLogo from './images/kuwo_32.ico';
 
 function Wrapper(props) {
   const { provider, pagination, operatingBar } = props;
-  const { logo, link } = providers[provider];
+  const logo = logos[provider];
   return (
     <div className="white-card"
       style={{
@@ -16,9 +16,7 @@ function Wrapper(props) {
     >
       <Row type="flex" align="middle" style={{ marginBottom: '10px' }}>
         <Col span={10}>
-          <a href={link} target="_blank" rel="noreferrer" alt={provider}>
-            <img src={logo} alt="" />
-          </a>
+          <img src={logo} alt={provider} />
         </Col>
         <Col span={8}>
           {pagination}
@@ -32,19 +30,10 @@ function Wrapper(props) {
   );
 }
 
-const providers = {
-  netease: {
-    logo: neteaseMusicLogo,
-    link: 'https://music.163.com'
-  },
-  qq: {
-    logo: qqMusicLogo,
-    link: 'https://y.qq.com'
-  },
-  kuwo: {
-    logo: kuwoMusicLogo,
-    link: 'https://www.kuwo.cn',
-  },
+const logos = {
+  netease: neteaseMusicLogo,
+  qq: qqMusicLogo,
+  kuwo: kuwoMusicLogo,
 };
 
 export default Wrapper;
