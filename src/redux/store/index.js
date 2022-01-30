@@ -28,15 +28,14 @@ store.subscribe(() => {
           console.log('err ', err);
         });
     });
-
   }
-
 });
 
 const onSearch = () => {
   store.dispatch({ type: 'CLEAR_RESULTS' });
   store.dispatch({ type: 'UPDATE_SEARCH_STATUS', data: 'searching' });
 };
+
 const onResultResponded = (provider, data) => {
   store.dispatch({
     type: 'UPDATE_SEARCH_RESULTS', provider, data

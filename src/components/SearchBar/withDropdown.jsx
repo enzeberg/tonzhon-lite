@@ -34,17 +34,22 @@ class SearchBar extends Component {
 
     const menu = (
       <Menu selectable onSelect={this.onSelect}>
-        <Menu.ItemGroup key="history" title={
-          <div style={{ alignItems: 'center', justifyContent: 'space-between',
-              display: 'flex'
-            }}
-          >
-            <span>搜索历史</span>
-            <Button icon={<DeleteOutlined />}
-              type="circle"
-              onClick={() => this.props.clearSearchHistory()}
-            />
-          </div>}
+        <Menu.ItemGroup key="history"
+          title={
+            <div
+              style={{
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                display: 'flex'
+              }}
+            >
+              <span>搜索历史</span>
+              <Button icon={<DeleteOutlined />}
+                type="circle"
+                onClick={() => this.props.clearSearchHistory()}
+              />
+            </div>
+          }
         >
           {
             searchHistory.map(item => (

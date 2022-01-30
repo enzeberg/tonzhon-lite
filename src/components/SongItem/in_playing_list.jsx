@@ -12,11 +12,11 @@ class SongItem extends Component {
   constructor(props) {
     super(props);
 
-    this.changeCurrentSong = this.changeCurrentSong.bind(this);
-    this.deleteFromPlayingList = this.deleteFromPlayingList.bind(this);
+    this.onListItemClick = this.onListItemClick.bind(this);
+    this.onDeleteBtnClick = this.onDeleteBtnClick.bind(this);
   }
 
-  changeCurrentSong() {
+  onListItemClick() {
     const index = this.props.playingList.findIndex(song =>
       song.newId === this.props.song.newId);
     if (index === -1) {
@@ -27,7 +27,7 @@ class SongItem extends Component {
     }
   }
 
-  deleteFromPlayingList(e) {
+  onDeleteBtnClick(e) {
     e.stopPropagation();
     const index = this.props.playingList.findIndex(song =>
                   song.newId === this.props.song.newId);
@@ -41,7 +41,7 @@ class SongItem extends Component {
     let { song, currentSong } = this.props;
     return (
       <List.Item
-        onClick={this.changeCurrentSong}
+        onClick={this.onListItemClick}
         className={currentSong && currentSong.newId === song.newId ?
           'playing' : ''
         }
@@ -53,7 +53,7 @@ class SongItem extends Component {
               verticalAlign: 'middle',
               color: 'white',
             }}
-            onClick={this.deleteFromPlayingList}
+            onClick={this.onDeleteBtnClick}
           />
         }
       >

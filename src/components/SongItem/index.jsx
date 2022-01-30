@@ -16,10 +16,10 @@ class SongItem extends Component {
   constructor(props) {
     super(props);
 
-    this.changeCurrentSong = this.changeCurrentSong.bind(this);
+    this.onPlayBtnClick = this.onPlayBtnClick.bind(this);
   }
 
-  changeCurrentSong() {
+  onPlayBtnClick() {
     const index = this.props.playingList.findIndex(song =>
       song.newId === this.props.song.newId);
     if (index === -1) {
@@ -32,7 +32,6 @@ class SongItem extends Component {
 
   render() {
     let { song, currentSong } = this.props;
-    // let anchorClass = song.hasCopyright ? '' : 'no-copyright';
     return (
       <List.Item style={{ padding: '5px 10px' }}>
         <Row type="flex" align="middle" style={{ width: '100%', fontSize: 14 }}>
@@ -40,11 +39,9 @@ class SongItem extends Component {
             <a href={buildSongLink(song.platform, song.originalId)}
               title={
                 `${song.name}${song.alias ? ` - ${song.alias}` : ''}`
-                // + `\n${song.hasCopyright ? '' : '（此歌曲在该平台可能存在版权问题。）'}`
               }
               target="_blank"
               rel="noreferrer"
-              // className={anchorClass}
             >
               <span>{song.name}</span>
               <span className="song-alias">
@@ -80,15 +77,15 @@ class SongItem extends Component {
           </Col>
           <Col span={1}>
             <PlayCircleOutlined
-              style={{
-                fontSize: 20,
-                display: 'block',
-              }}
-              onClick={this.changeCurrentSong}
+              onClick={this.onPlayBtnClick}
               className={
                 currentSong && currentSong.newId === song.newId
                   ? 'play-btn playing' : 'play-btn'
               }
+              style={{
+                fontSize: 20,
+                display: 'block',
+              }}
             />
           </Col>
           <Col span={1}>

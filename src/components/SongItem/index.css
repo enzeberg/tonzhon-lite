@@ -2,8 +2,8 @@
   color: #999;
 }
 
-a.play-btn.playing {
-  color: #EA7030;
+.play-btn.playing {
+  color: orange;
 }
 
 .song-list li:hover {
