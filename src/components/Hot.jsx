@@ -12,10 +12,10 @@ class Hot extends Component {
       platform: 'netease',
     };
     
-    this.changePlatform = this.changePlatform.bind(this);
+    this.onMenuClick = this.onMenuClick.bind(this);
   }
 
-  changePlatform({item, key}) {
+  onMenuClick({item, key}) {
     this.setState({
       platform: key,
     });
@@ -30,7 +30,7 @@ class Hot extends Component {
               defaultSelectedKeys={ ['netease'] }
               mode="inline"
               defaultOpenKeys={['netease']}
-              onClick={this.changePlatform}
+              onClick={this.onMenuClick}
             >
               <Menu.Item key="netease">
                 网易云音乐

@@ -21,8 +21,9 @@ class PlayingList extends Component {
         >
           <Col span={20}>播放列表</Col>
           <Col span={4} style={{ textAlign: 'right' }}>
-            <Button icon={<DeleteOutlined />} ghost
+            <Button ghost
               onClick={this.props.clearPlaylist}
+              icon={<DeleteOutlined />}
             >
               清空
             </Button>
