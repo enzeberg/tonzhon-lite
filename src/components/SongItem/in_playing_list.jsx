@@ -12,11 +12,11 @@ class SongItem extends Component {
   constructor(props) {
     super(props);
 
-    this.onListItemClick = this.onListItemClick.bind(this);
+    this.onMainPartClick = this.onMainPartClick.bind(this);
     this.onDeleteBtnClick = this.onDeleteBtnClick.bind(this);
   }
 
-  onListItemClick() {
+  onMainPartClick() {
     const index = this.props.playingList.findIndex(song =>
       song.newId === this.props.song.newId);
     if (index === -1) {
@@ -28,7 +28,6 @@ class SongItem extends Component {
   }
 
   onDeleteBtnClick(e) {
-    e.stopPropagation();
     const index = this.props.playingList.findIndex(song =>
                   song.newId === this.props.song.newId);
     if (index + 1 === this.props.playingList.length) {
@@ -41,11 +40,10 @@ class SongItem extends Component {
     let { song, currentSong } = this.props;
     return (
       <List.Item
-        onClick={this.onListItemClick}
-        className={currentSong && currentSong.newId === song.newId ?
-          'playing' : ''
+        className={
+          currentSong && currentSong.newId === song.newId
+          ? 'playing' : ''
         }
-        style={{ border: 'none', padding: '6px 10px' }}
         extra={
           <DeleteOutlined
             style={{
@@ -56,9 +54,15 @@ class SongItem extends Component {
             onClick={this.onDeleteBtnClick}
           />
         }
+        style={{ border: 'none', padding: '0 10px' }}
       >
         <Row type="flex" align="middle"
-          style={{ width: '100%', color: 'white', }}
+          onClick={this.onMainPartClick}
+          style={{
+            width: '100%',
+            color: 'white',
+            padding: '6px 0',
+          }}
         >
           <Col span={12} className="nowrap">
             {song.name}

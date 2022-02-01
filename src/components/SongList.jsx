@@ -8,14 +8,12 @@ function SongList({ songs, showPlatform }) {
     <List
       itemLayout="horizontal"
       dataSource={songs}
-      renderItem={song => {
-        return (
-          <SongItem key={song.link}
-            song={song}
-            showPlatform={showPlatform}
-          />
-        );
-      }}
+      renderItem={song => (
+        <SongItem
+          song={song}
+          showPlatform={showPlatform}
+        />
+      )}
       className="song-list"
     />
   );

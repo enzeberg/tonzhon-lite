@@ -3,7 +3,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { Button, List, Row, Col } from 'antd';
 import { connect } from 'react-redux';
 
-import ItemInPlaylist from './SongItem/in_playing_list';
+import ItemInPlayingList from './SongItem/in_playing_list';
 
 class PlayingList extends Component {
   // constructor(props) {
@@ -12,59 +12,76 @@ class PlayingList extends Component {
 
   render() {
     return (
-      <div style={styles.wrapper}>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '64px',
+          color: 'white',
+          right: `${(document.body.clientWidth - 1000) / 2}px`,
+          width: '600px',
+          height: '320px',
+          borderTopLeftRadius: '5px',
+          borderTopRightRadius: '5px',
+          background: 'rgb(70,70,70)',
+        }}
+      >
         <Row
           type="flex"
           align="middle"
           justify="space-between"
-          style={styles.header}
+          style={{
+            padding: '10px',
+            background: '#222',
+            borderTopLeftRadius: '5px',
+            borderTopRightRadius: '5px',
+          }}
         >
           <Col span={20}>播放列表</Col>
           <Col span={4} style={{ textAlign: 'right' }}>
             <Button ghost
-              onClick={this.props.clearPlaylist}
               icon={<DeleteOutlined />}
+              onClick={this.props.clearPlaylist}
             >
               清空
             </Button>
           </Col>
         </Row>
         <List
-          id="playingList"
-          style={styles.list}
+          id="playing-list"
           itemLayout="horizontal"
           dataSource={this.props.dataSource}
-          renderItem={song => {
-            return (
-              <ItemInPlaylist key={song.link}
-                song={song}
-              />
-            );
+          renderItem={song => (
+            <ItemInPlayingList song={song} />
+          )}
+          style={{
+            color: 'white',
+            overflow: 'auto',
+            height: '268px',
           }}
         />
         <style jsx="true">{`
-          #playingList::-webkit-scrollbar {
+          #playing-list::-webkit-scrollbar {
             background-color: #222;
             width: 7px;
             border-radius: 10px;
           }
-          #playingList::-webkit-scrollbar-thumb {
+          #playing-list::-webkit-scrollbar-thumb {
             background-color: #999;
             border-radius: 10px;
             /* width: 5px; */
           }
-          #playingList::-webkit-scrollbar-track {
+          #playing-list::-webkit-scrollbar-track {
             display: none;
             border-radius: 10px;
           }
-          #playingList::-webkit-scrollbar-track-piece {
+          #playing-list::-webkit-scrollbar-track-piece {
             border-radius: 10px;
           }
-          #playingList li:hover {
+          #playing-list li:hover {
             cursor: pointer;
             background-color: rgb(50, 50, 50);
           }
-          #playingList li.playing {
+          #playing-list li.playing {
             background-color: rgb(60, 60, 60);
           }
         `}</style>
@@ -72,32 +89,6 @@ class PlayingList extends Component {
     );
   }
 }
-
-const styles = {
-  wrapper: {
-    position: 'absolute',
-    bottom: 64,
-    color: 'white',
-    // right: `${(document.body.clientWidth - 1000) / 2}px`,
-    right: (document.body.clientWidth - 1000) / 2,
-    width: 600,
-    height: 320,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    background: 'rgb(70,70,70)',
-  },
-  header: {
-    padding: 10,
-    background: '#222',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-  },
-  list: {
-    color: 'white',
-    overflow: 'auto',
-    height: 268,
-  },
-};
 
 function mapStateToProps(state) {
   return {
