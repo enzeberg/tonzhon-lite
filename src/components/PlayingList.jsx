@@ -16,10 +16,8 @@ class PlayingList extends Component {
         style={{
           position: 'absolute',
           bottom: '64px',
-          color: 'white',
           right: `${(document.body.clientWidth - 1000) / 2}px`,
           width: '600px',
-          height: '320px',
           borderTopLeftRadius: '5px',
           borderTopRightRadius: '5px',
           background: 'rgb(70,70,70)',
@@ -56,7 +54,7 @@ class PlayingList extends Component {
           style={{
             color: 'white',
             overflow: 'auto',
-            height: '268px',
+            height: '280px',
           }}
         />
         <style jsx="true">{`

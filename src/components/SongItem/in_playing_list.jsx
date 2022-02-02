@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, List } from 'antd';
+import { Row, Col, List, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
@@ -12,11 +12,11 @@ class SongItem extends Component {
   constructor(props) {
     super(props);
 
-    this.onMainPartClick = this.onMainPartClick.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
     this.onDeleteBtnClick = this.onDeleteBtnClick.bind(this);
   }
 
-  onMainPartClick() {
+  onRowClick() {
     const index = this.props.playingList.findIndex(song =>
       song.newId === this.props.song.newId);
     if (index === -1) {
@@ -27,7 +27,7 @@ class SongItem extends Component {
     }
   }
 
-  onDeleteBtnClick(e) {
+  onDeleteBtnClick() {
     const index = this.props.playingList.findIndex(song =>
                   song.newId === this.props.song.newId);
     if (index + 1 === this.props.playingList.length) {
@@ -45,23 +45,24 @@ class SongItem extends Component {
           ? 'playing' : ''
         }
         extra={
-          <DeleteOutlined
-            style={{
-              fontSize: 18,
-              verticalAlign: 'middle',
-              color: 'white',
-            }}
+          <Button
             onClick={this.onDeleteBtnClick}
+            icon={<DeleteOutlined />}
+            size="small"
+            ghost
           />
         }
-        style={{ border: 'none', padding: '0 10px' }}
+        style={{
+          border: 'none',
+          padding: '0 10px 0 0',
+        }}
       >
         <Row type="flex" align="middle"
-          onClick={this.onMainPartClick}
+          onClick={this.onRowClick}
           style={{
             width: '100%',
             color: 'white',
-            padding: '6px 0',
+            padding: '5px 10px',
           }}
         >
           <Col span={12} className="nowrap">
