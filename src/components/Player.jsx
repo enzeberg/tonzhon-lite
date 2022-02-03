@@ -20,7 +20,7 @@ import { FiVolume2 as VolumeIcon, FiVolumeX as MuteIcon } from 'react-icons/fi';
 import ArtistLinks from './ArtistLinks';
 import MVIcon from './MVIcon';
 import PlayingList from './PlayingList';
-import { toMinAndSec } from '../utils/time_converter';
+import toMinAndSec from '../utils/to_min_and_sec';
 import { buildSongLink } from '../utils/link';
 
 const playModeIcons = {
@@ -40,7 +40,7 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      getMusicUrlStatus: 'notYet',
+      getSongSourceStatus: 'notYet',
       playStatus: 'pausing',
       playMode: localStorage.getItem('playMode') || 'loop',
       volume: localStorage.getItem('volume')
@@ -161,20 +161,20 @@ class Player extends Component {
 
   getSongSource(platform, originalId, callback) {
     this.setState({
-      getMusicUrlStatus: 'started',
+      getSongSourceStatus: 'started',
     });
     fetch(`/api/song_source/${platform}/${originalId}`)
       .then(res => res.json())
       .then(json => {
         if (json.status === 'ok') {
           this.setState({
-            getMusicUrlStatus: 'ok',
+            getSongSourceStatus: 'ok',
             songSource: json.data.songSource,
             songLoaded: false,
           }, callback);
         } else {
           this.setState({
-            getMusicUrlStatus: 'failed',
+            getSongSourceStatus: 'failed',
           }, () => {
             this.afterLoadingFailure();
           });
@@ -182,7 +182,7 @@ class Player extends Component {
       })
       .catch(err => {
         this.setState({
-          getMusicUrlStatus: 'failed',
+          getSongSourceStatus: 'failed',
         }, () => {
           this.afterLoadingFailure();
         });
@@ -247,7 +247,7 @@ class Player extends Component {
 
   render() {
     const { currentSong } = this.props;
-    const { getMusicUrlStatus, playStatus } = this.state;
+    const { getSongSourceStatus, playStatus } = this.state;
     const progress = toMinAndSec(this.state.playProgress);
     const total = toMinAndSec(this.state.songDuration);
     return (
@@ -278,11 +278,11 @@ class Player extends Component {
               disabled={!currentSong}
               onClick={this.onCentralBtnClick}
               icon={
-                getMusicUrlStatus === 'notYet' ? <CaretRightOutlined />
+                getSongSourceStatus === 'notYet' ? <CaretRightOutlined />
                   : (
-                    getMusicUrlStatus === 'started' ? <LoadingOutlined />
+                    getSongSourceStatus === 'started' ? <LoadingOutlined />
                       : (
-                        getMusicUrlStatus === 'ok'
+                        getSongSourceStatus === 'ok'
                           ? (
                             playStatus === 'playing'
                               ? <PauseOutlined />
@@ -354,11 +354,22 @@ class Player extends Component {
                     </Col>
                     <Col span={4} className="gray-in-player" style={{ textAlign: 'right' }}>
                       {
-                        getMusicUrlStatus === 'failed' ? '加载失败' :
-                          (
-                            this.state.songLoaded ? `${progress} / ${total}` :
-                              '00:00 / 00:00'
-                          )
+                        getSongSourceStatus === 'started'
+                        ? <LoadingOutlined />
+                        : (
+                          getSongSourceStatus === 'failed' ? '加载失败' :
+                            // (
+                            //   this.state.songLoaded ? `${progress} / ${total}`
+                            //   : '00:00 / 00:00'
+                            // )
+                            (
+                              this.state.songLoaded &&
+                              <>
+                                <span>{progress}</span>
+                                <span> / {total}</span>
+                              </>
+                            )
+                        )
                       }
                     </Col>
                   </>

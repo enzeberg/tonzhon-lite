@@ -11,6 +11,4 @@ const toMinAndSec = (seconds) => {
   return `${minutes}:${seconds}`;
 };
 
-export {
-  toMinAndSec
-};
+export default toMinAndSec;
