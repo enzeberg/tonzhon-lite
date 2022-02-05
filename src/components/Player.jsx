@@ -18,7 +18,7 @@ import {
 import { FiVolume2 as VolumeIcon, FiVolumeX as MuteIcon } from 'react-icons/fi';
 
 import ArtistLinks from './ArtistLinks';
-import MVIcon from './MVIcon';
+import MvIcon from './MvIcon';
 import PlayingList from './PlayingList';
 import toMinAndSec from '../utils/to_min_and_sec';
 import { buildSongLink } from '../utils/link';
@@ -327,7 +327,7 @@ class Player extends Component {
                     <Col span={2}>
                       {
                         currentSong.mv &&
-                        <MVIcon
+                        <MvIcon
                           platform={currentSong.platform}
                           id={currentSong.mv}
                           color="white"

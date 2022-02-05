@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { message } from 'antd';
+import { Button, message } from 'antd';
 import { connect } from 'react-redux';
 
 class AddToPlayingList extends Component {
@@ -17,13 +17,19 @@ class AddToPlayingList extends Component {
 
   render() {
     return (
-      <PlusOutlined
-        style={{
-          fontSize: 20,
-          display: 'block',
-        }}
-        onClick={this.handleClick}
+      // <PlusOutlined
+      //   style={{
+      //     fontSize: 20,
+      //     display: 'block',
+      //   }}
+      //   onClick={this.handleClick}
+      //   title="添加到播放列表"
+      // />
+      <Button
+        icon={<PlusOutlined />}
+        size="small"
         title="添加到播放列表"
+        onClick={this.handleClick}
       />
     );
   }

@@ -1,9 +1,6 @@
-.song-alias {
-  color: #999;
-}
-
 .play-btn.playing {
   color: orange;
+  border-color: orange;
 }
 
 .song-list li:hover {

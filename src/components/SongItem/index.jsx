@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Row, Col, List } from 'antd';
-import { PlayCircleOutlined } from '@ant-design/icons';
+import { Row, Col, List, Button } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
 import ArtistLinks from '../ArtistLinks';
-import MVIcon from '../MVIcon';
+import MvIcon from '../MvIcon';
 import AddToPlayingList from './AddToPlayingList';
 import './index.css';
 import { buildSongLink, buildAlbumLink } from '../../utils/link';
@@ -33,8 +33,13 @@ class SongItem extends Component {
   render() {
     let { song, currentSong } = this.props;
     return (
-      <List.Item style={{ padding: '5px 10px' }}>
-        <Row type="flex" align="middle" style={{ width: '100%', fontSize: 14 }}>
+      <List.Item style={{ padding: '4px 10px' }}>
+        <Row type="flex" align="middle"
+          style={{
+            width: '100%',
+            fontSize: 14,
+          }}
+        >
           <Col span={8} className="nowrap">
             <a href={buildSongLink(song.platform, song.originalId)}
               title={
@@ -44,13 +49,13 @@ class SongItem extends Component {
               rel="noreferrer"
             >
               <span>{song.name}</span>
-              <span className="song-alias">
+              <span style={{ color: '#999' }}>
                 {song.alias && ` - ${song.alias}`}
               </span>
             </a>
           </Col>
           <Col span={1}>
-            {song.mv && <MVIcon platform={song.platform} id={song.mv} />}
+            {song.mv && <MvIcon platform={song.platform} id={song.mv} />}
           </Col>
           <Col span={6} className="nowrap">
             <ArtistLinks platform={song.platform} artists={song.artists} />
@@ -75,8 +80,12 @@ class SongItem extends Component {
                 />
             }
           </Col>
-          <Col span={1}>
-            <PlayCircleOutlined
+          <Col span={2}
+            style={{
+              textAlign: 'right',
+            }}
+          >
+            {/* <PlayCircleOutlined
               onClick={this.onPlayBtnClick}
               className={
                 currentSong && currentSong.newId === song.newId
@@ -86,11 +95,25 @@ class SongItem extends Component {
                 fontSize: 20,
                 display: 'block',
               }}
+            /> */}
+            <Button
+              icon={<CaretRightOutlined />}
+              shape="circle"
+              size="small"
+              onClick={this.onPlayBtnClick}
+              className={
+                currentSong && currentSong.newId === song.newId
+                  ? 'play-btn playing' : 'play-btn'
+              }
+              style={{
+                marginRight: '8px',
+              }}
             />
-          </Col>
-          <Col span={1}>
             <AddToPlayingList data={song} />
           </Col>
+          {/* <Col span={1}>
+            <AddToPlayingList data={song} />
+          </Col> */}
         </Row>
       </List.Item>
     );

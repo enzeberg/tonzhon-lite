@@ -15,7 +15,7 @@ function MVIcon({ platform, id, color }) {
         style={{
           display: 'block',
           fontSize: 20,
-          color: color || 'black',
+          color,
         }}
       />
     </a>
