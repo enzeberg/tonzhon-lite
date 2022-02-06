@@ -65,10 +65,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onResultResponded: (provider, data) => {
-      dispatch({ type: 'UPDATE_SEARCH_RESULTS', provider, data});
+      dispatch({ type: 'UPDATE_SEARCH_RESULTS', provider, data });
     }
   };
 }
 
-export default connect(mapStateToProps,
-                       mapDispatchToProps)(SearchResult);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);

@@ -10,7 +10,7 @@ import ArtistLinks from '../ArtistLinks';
 import MvIcon from '../MvIcon';
 import AddToPlayingList from './AddToPlayingList';
 import './index.css';
-import { buildSongLink, buildAlbumLink } from '../../utils/link';
+import { buildSongLink, buildAlbumLink } from '../../utils/build_link';
 
 class SongItem extends Component {
   constructor(props) {

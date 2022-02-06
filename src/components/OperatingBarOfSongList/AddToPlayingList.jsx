@@ -28,7 +28,7 @@ class AddToPlayingList extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     addToPlaylist: (data) => {
-      dispatch({ type: 'ADD_LIST_TO_PLAYING_LIST', data: data });
+      dispatch({ type: 'ADD_LIST_TO_PLAYING_LIST', data });
     },
   };
 }

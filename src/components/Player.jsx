@@ -21,7 +21,7 @@ import ArtistLinks from './ArtistLinks';
 import MvIcon from './MvIcon';
 import PlayingList from './PlayingList';
 import toMinAndSec from '../utils/to_min_and_sec';
-import { buildSongLink } from '../utils/link';
+import { buildSongLink } from '../utils/build_link';
 
 const playModeIcons = {
   loop: <LoopIcon className="player-icon" />,
@@ -337,9 +337,10 @@ class Player extends Component {
                     <Col span={6} className="nowrap">
                       {
                         currentSong.artists &&
-                        <ArtistLinks artists={currentSong.artists}
+                        <ArtistLinks
+                          artists={currentSong.artists}
                           platform={currentSong.platform}
-                          fontColor="white"
+                          color="white"
                         />
                       }
                     </Col>

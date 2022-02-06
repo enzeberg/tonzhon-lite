@@ -84,5 +84,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(connect(mapStateToProps,
-                                  mapDispatchToProps)(SearchBar));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar));

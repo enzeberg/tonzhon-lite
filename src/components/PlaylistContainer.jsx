@@ -70,7 +70,7 @@ class PlaylistContainer extends Component {
           : (
             songs.length > 0
             ? <SongList songs={songs} />
-            : '获取失败，可能是因为该 Playlist ID 不存在。'
+            : '获取失败, 可能是因为该 Playlist ID 不存在。'
           )
         }
       </>
