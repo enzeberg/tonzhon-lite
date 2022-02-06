@@ -41,11 +41,12 @@ class Player extends Component {
     super(props);
     this.state = {
       getSongSourceStatus: 'notYet',
-      playStatus: 'pausing',
+      playerStatus: 'pausing',
       playMode: localStorage.getItem('playMode') || 'loop',
       volume: localStorage.getItem('volume')
               ? Number(localStorage.getItem('volume')) : 0.6,
       songSource: null,
+      songLoaded: false,
       muted: false,
       playProgress: 0,
       playingListVisible: false,
@@ -65,37 +66,30 @@ class Player extends Component {
       this.setState({
         songLoaded: true,
         songDuration: this.audio.duration,
-        // playProgress: 0
       });
     });
+
     this.audio.addEventListener('play', () => {
-      document.title = `${this.props.currentSong.name} -
-                        ${this.props.currentSong.artists
-                        .map(item => item.name)
-                        .reduce(
-                          (accumulator, currentValue) =>
-                            accumulator + ' / ' + currentValue
-                        )}`;
-      if (this.interval) { clearInterval(this.interval); }
+      document.title = `${this.props.currentSong.name}`;
+      if (this.interval) {
+        clearInterval(this.interval);
+      }
       this.interval = setInterval(() => {
         this.setState({
           playProgress: this.audio.currentTime,
-          // songDuration: this.audio.duration,
         });
       }, 1000);
     });
+
     this.audio.addEventListener('pause', () => {
       if (this.interval) {
         clearInterval(this.interval);
       }
     });
+
     this.audio.addEventListener('ended', () => {
       clearInterval(this.interval);
-      this.setState({
-        playProgress: this.audio.currentTime,
-      }, () => {
-        this.playNext('forward');
-      });
+      this.playNext('forward');
     });
   }
 
@@ -107,11 +101,6 @@ class Player extends Component {
       if ((prevSong && currentSong.newId !== prevSong.newId)
           || !prevSong) {
         this.audio.pause();
-        this.setState({
-          songSource: null,
-          songLoaded: false,
-          playProgress: 0,
-        });
         this.getSongSourceAndPlay(currentSong);
       }
     } else {
@@ -126,15 +115,15 @@ class Player extends Component {
   }
 
   onCentralBtnClick() {
-    const { playStatus } = this.state;
-    if (playStatus === 'pausing') {
+    const { playerStatus } = this.state;
+    if (playerStatus === 'pausing') {
       if (this.state.songSource) {
         this.play();
       } else {
         const { currentSong } = this.props;
         this.getSongSourceAndPlay(currentSong);
       }
-    } else if (playStatus === 'playing') {
+    } else if (playerStatus === 'playing') {
       this.pause();
     }
   }
@@ -148,19 +137,22 @@ class Player extends Component {
   play() {
     this.audio.play();
     this.setState({
-      playStatus: 'playing',
+      playerStatus: 'playing',
     });
   }
   
   pause() {
     this.audio.pause();
     this.setState({
-      playStatus: 'pausing',
+      playerStatus: 'pausing',
     });
   }
 
   getSongSource(platform, originalId, callback) {
     this.setState({
+      songSource: null,
+      songLoaded: false,
+      playProgress: 0,
       getSongSourceStatus: 'started',
     });
     fetch(`/api/song_source/${platform}/${originalId}`)
@@ -170,29 +162,24 @@ class Player extends Component {
           this.setState({
             getSongSourceStatus: 'ok',
             songSource: json.data.songSource,
-            songLoaded: false,
           }, callback);
         } else {
-          this.setState({
-            getSongSourceStatus: 'failed',
-          }, () => {
-            this.afterLoadingFailure();
-          });
+          this.failedToGetSongSource();
         }
       })
       .catch(err => {
-        this.setState({
-          getSongSourceStatus: 'failed',
-        }, () => {
-          this.afterLoadingFailure();
-        });
+        this.failedToGetSongSource();
       });
   }
 
-  afterLoadingFailure() {
-    message.error('加载失败');
-    this.playNext('forward');
-    message.info('已跳过');
+  failedToGetSongSource() {
+    this.setState({
+      getSongSourceStatus: 'failed',
+    }, () => {
+      message.error('加载失败');
+      this.playNext('forward');
+      message.info('已跳过');
+    });
   }
 
   onPlayProgressSliderChange(value) {
@@ -217,7 +204,7 @@ class Player extends Component {
   }
 
   playNext(direction) {
-    if (this.state.playStatus === 'playing') {
+    if (this.state.playerStatus === 'playing') {
       this.pause();
     }
     const { currentSong, playingList } = this.props;
@@ -247,7 +234,7 @@ class Player extends Component {
 
   render() {
     const { currentSong } = this.props;
-    const { getSongSourceStatus, playStatus } = this.state;
+    const { getSongSourceStatus, songLoaded, playerStatus } = this.state;
     const progress = toMinAndSec(this.state.playProgress);
     const total = toMinAndSec(this.state.songDuration);
     return (
@@ -278,19 +265,25 @@ class Player extends Component {
               disabled={!currentSong}
               onClick={this.onCentralBtnClick}
               icon={
-                getSongSourceStatus === 'notYet' ? <CaretRightOutlined />
+                getSongSourceStatus === 'notYet'
+                ? <CaretRightOutlined />
+                : (
+                  getSongSourceStatus === 'started'
+                  ? <LoadingOutlined />
                   : (
-                    getSongSourceStatus === 'started' ? <LoadingOutlined />
-                      : (
-                        getSongSourceStatus === 'ok'
-                          ? (
-                            playStatus === 'playing'
-                              ? <PauseOutlined />
-                              : <CaretRightOutlined />
-                          )
-                          : <CaretRightOutlined />
+                    getSongSourceStatus === 'ok'
+                    ? (
+                      songLoaded
+                      ? (
+                        playerStatus === 'playing'
+                        ? <PauseOutlined />
+                        : <CaretRightOutlined />
                       )
+                      : <LoadingOutlined />
+                    )
+                    : <CaretRightOutlined />
                   )
+                )
               }
               style={{ margin: '0 10px' }}
             />
@@ -355,21 +348,23 @@ class Player extends Component {
                     </Col>
                     <Col span={4} className="gray-in-player" style={{ textAlign: 'right' }}>
                       {
-                        getSongSourceStatus === 'started'
-                        ? <LoadingOutlined />
+                        songLoaded
+                        ? (
+                          <>
+                            <span>{progress}</span>
+                            <span> / {total}</span>
+                          </>
+                        )
                         : (
-                          getSongSourceStatus === 'failed' ? '加载失败' :
-                            // (
-                            //   this.state.songLoaded ? `${progress} / ${total}`
-                            //   : '00:00 / 00:00'
-                            // )
-                            (
-                              this.state.songLoaded &&
-                              <>
-                                <span>{progress}</span>
-                                <span> / {total}</span>
-                              </>
+                          getSongSourceStatus === 'started'
+                          ? <LoadingOutlined />
+                          : (
+                            getSongSourceStatus === 'ok'
+                            ? <LoadingOutlined />
+                            : (
+                              getSongSourceStatus === 'failed' && '加载失败'
                             )
+                          )
                         )
                       }
                     </Col>
@@ -403,23 +398,29 @@ class Player extends Component {
             <Tooltip
               title={modeExplanations[this.state.playMode]}
             >
-              <a onClick={this.onPlayModeBtnClick}>
+              <button
+                className="in-player"
+                onClick={this.onPlayModeBtnClick}
+              >
                 {
                   playModeIcons[this.state.playMode]
                 }
-              </a>
+              </button>
             </Tooltip>
           </Col>
           <Col span={3}>
             <Row type="flex" align="middle">
               <Col span={4}>
-                <a onClick={this.onVolumeBtnClick}>
+                <button
+                  className="in-player"
+                  onClick={this.onVolumeBtnClick}
+                >
                   {
                     this.state.muted
-                      ? <MuteIcon className="player-icon" />
-                      : <VolumeIcon className="player-icon" />
+                    ? <MuteIcon className="player-icon" />
+                    : <VolumeIcon className="player-icon" />
                   }
-                </a>
+                </button>
               </Col>
               <Col span={20}>
                 <Slider min={0}
