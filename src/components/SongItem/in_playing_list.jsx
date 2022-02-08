@@ -30,7 +30,8 @@ class SongItem extends Component {
   onDeleteBtnClick() {
     const index = this.props.playingList.findIndex(song =>
                   song.newId === this.props.song.newId);
-    if (index + 1 === this.props.playingList.length) {
+    if (this.props.currentSong.newId === this.props.song.newId
+        && index + 1 === this.props.playingList.length) {
       this.props.updatePlayIndex(0);
     }
     this.props.deleteSongInPlayingList(index, this.props.playIndex);
