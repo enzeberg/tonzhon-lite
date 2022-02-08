@@ -40,16 +40,16 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      getSongSourceStatus: 'notYet',
       playerStatus: 'pausing',
       playMode: localStorage.getItem('playMode') || 'loop',
+      muted: false,
       volume: localStorage.getItem('volume')
               ? Number(localStorage.getItem('volume')) : 0.6,
+      playingListVisible: false,
+      getSongSourceStatus: 'notYet',
       songSource: null,
       songLoaded: false,
-      muted: false,
       playProgress: 0,
-      playingListVisible: false,
     };
     
     this.onCentralBtnClick = this.onCentralBtnClick.bind(this);
@@ -98,8 +98,7 @@ class Player extends Component {
     const currentSong = this.props.currentSong;
 
     if (currentSong) {
-      if ((prevSong && currentSong.newId !== prevSong.newId)
-          || !prevSong) {
+      if ((prevSong && currentSong.newId !== prevSong.newId) || !prevSong) {
         this.audio.pause();
         this.getSongSourceAndPlay(currentSong);
       }
@@ -234,9 +233,16 @@ class Player extends Component {
 
   render() {
     const { currentSong } = this.props;
-    const { getSongSourceStatus, songLoaded, playerStatus } = this.state;
-    const progress = toMinAndSec(this.state.playProgress);
-    const total = toMinAndSec(this.state.songDuration);
+    const {
+      playerStatus,
+      getSongSourceStatus,
+      songSource,
+      songLoaded,
+      songDuration,
+      playProgress
+    } = this.state;
+    const progress = toMinAndSec(playProgress);
+    const total = toMinAndSec(songDuration);
     return (
       <div
         style={{
@@ -248,18 +254,21 @@ class Player extends Component {
           color: 'white',
         }}
       >
-        <audio src={this.state.songSource}
+        <audio
+          src={songSource}
           ref={(audio) => { this.audio = audio; }}
         />
 
         <Row type="flex" align="middle" className="container" justify="space-around">
           <Col span={4}>
-            <Button ghost
+            <Button
+              ghost
               shape="circle"
               icon={<StepBackwardOutlined />}
               onClick={() => this.playNext('backward')}
             />
-            <Button ghost
+            <Button
+              ghost
               shape="circle"
               size="large"
               disabled={!currentSong}
@@ -287,7 +296,8 @@ class Player extends Component {
               }
               style={{ margin: '0 10px' }}
             />
-            <Button ghost
+            <Button
+              ghost
               shape="circle"
               icon={<StepForwardOutlined />}
               onClick={() => this.playNext('forward')}
@@ -337,7 +347,8 @@ class Player extends Component {
                         />
                       }
                     </Col>
-                    <Col span={5}
+                    <Col
+                      span={5}
                       className="gray-in-player"
                       style={{
                         fontSize: 'small',
@@ -374,12 +385,12 @@ class Player extends Component {
             <Slider
               min={0}
               max={
-                this.state.songDuration ? parseInt(this.state.songDuration) : 0
+                songDuration ? parseInt(songDuration) : 0
               }
-              value={this.state.playProgress}
+              value={playProgress}
               tipFormatter={(value) => toMinAndSec(value)}
               onChange={this.onPlayProgressSliderChange}
-              disabled={!this.state.songSource}
+              disabled={!songSource}
               style={{ margin: '8px 0' }}
             />
           </Col>
@@ -388,10 +399,10 @@ class Player extends Component {
               icon={<DownloadOutlined />}
               ghost
               shape="circle"
-              href={this.state.songSource}
+              href={songSource}
               target="_blank"
               download
-              disabled={this.state.songSource === null}
+              disabled={songSource === null}
             />
           </Col>
           <Col span={1} style={{ paddingLeft: 3 }}>
@@ -423,7 +434,8 @@ class Player extends Component {
                 </button>
               </Col>
               <Col span={20}>
-                <Slider min={0}
+                <Slider
+                  min={0}
                   max={1}
                   step={0.01}
                   defaultValue={this.state.volume}
@@ -433,7 +445,9 @@ class Player extends Component {
             </Row>
           </Col>
           <Col span={1} style={{ textAlign: 'right' }}>
-            <Button ghost icon={<UnorderedListOutlined />}
+            <Button
+              ghost
+              icon={<UnorderedListOutlined />}
               onClick={this.onPlayingListBtnClick}
               title="播放列表"
             />

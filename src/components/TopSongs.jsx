@@ -25,8 +25,9 @@ class TopSongs extends Component {
         if (this.state.topSongs.every((song) => song.platform !== key)) {
           if (currentResults[key].searchSuccess) {
             this.setState({
-              topSongs: [...this.state.topSongs,
-              currentResults[key].data.songs[0]
+              topSongs: [
+                ...this.state.topSongs,
+                currentResults[key].data.songs[0]
               ]
             });
           }

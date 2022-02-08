@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { buildArtistLink } from '../utils/build_link';
 
 function ArtistLinks({ platform, artists, color }) {
@@ -14,7 +15,7 @@ function ArtistLinks({ platform, artists, color }) {
       }}
     >
       {artist.name}
-      &ensp;
+      &nbsp;&nbsp;
     </a>
   ));
 }
