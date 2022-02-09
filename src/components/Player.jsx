@@ -71,7 +71,6 @@ class Player extends Component {
     });
 
     this.audio.addEventListener('play', () => {
-      document.title = `${this.props.currentSong.name}`;
       if (this.interval) {
         clearInterval(this.interval);
       }
