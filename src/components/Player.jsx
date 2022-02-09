@@ -22,6 +22,7 @@ import MvIcon from './MvIcon';
 import PlayingList from './PlayingList';
 import toMinAndSec from '../utils/to_min_and_sec';
 import { buildSongLink } from '../utils/build_link';
+import contentHandler from '../utils/content_handler';
 
 const playModeIcons = {
   loop: <LoopIcon className="player-icon" />,
@@ -319,14 +320,14 @@ class Player extends Component {
                         }
                         target="_blank"
                         rel="noreferrer"
-                        title={currentSong.name}
+                        title={contentHandler(currentSong.name, currentSong.platform)}
                         style={{
                           color: 'white',
                           marginRight: 4,
                           fontSize: 16,
                         }}
                       >
-                        <strong>{currentSong.name}</strong>
+                        <strong>{contentHandler(currentSong.name, currentSong.platform)}</strong>
                       </a>
                     </Col>
                     <Col span={2}>

@@ -4,6 +4,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
 import Artists from '../Artists';
+import contentHandler from '../../utils/content_handler';
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
@@ -38,7 +39,8 @@ class SongItem extends Component {
   }
 
   render() {
-    let { song, currentSong } = this.props;
+    const { song, currentSong } = this.props;
+    const { name, artists, platform } = song;
     return (
       <List.Item
         className={
@@ -67,13 +69,13 @@ class SongItem extends Component {
           }}
         >
           <Col span={12} className="nowrap">
-            {song.name}
+            {contentHandler(name, platform)}
           </Col>
           <Col span={10} className="nowrap">
-            <Artists artists={song.artists} />
+            <Artists artists={artists} platform={platform} />
           </Col>
           <Col span={2}>
-            <img src={logos[song.platform]} alt={song.platform} />
+            <img src={logos[platform]} alt={platform} />
           </Col>
         </Row>
       </List.Item>

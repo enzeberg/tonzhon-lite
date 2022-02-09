@@ -11,6 +11,7 @@ import MvIcon from '../MvIcon';
 import AddToPlayingList from './AddToPlayingList';
 import './index.css';
 import { buildSongLink, buildAlbumLink } from '../../utils/build_link';
+import contentHandler from '../../utils/content_handler';
 
 class SongItem extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class SongItem extends Component {
   }
 
   render() {
-    let { song, currentSong } = this.props;
+    const { song, currentSong } = this.props;
+    const { originalId, newId, platform, name, alias, mv, artists, album } = song;
     return (
       <List.Item style={{ padding: '4px 10px' }}>
         <Row type="flex" align="middle"
@@ -41,41 +43,43 @@ class SongItem extends Component {
           }}
         >
           <Col span={8} className="nowrap">
-            <a href={buildSongLink(song.platform, song.originalId)}
+            <a
+              href={buildSongLink(platform, originalId)}
               title={
-                `${song.name}${song.alias ? ` - ${song.alias}` : ''}`
+                `${contentHandler(name, platform)}
+                ${alias ? ` - ${contentHandler(alias, platform)}` : ''}`
               }
               target="_blank"
               rel="noreferrer"
             >
-              <span>{song.name}</span>
+              <span>{contentHandler(name, platform)}</span>
               <span style={{ color: '#999' }}>
-                {song.alias && ` - ${song.alias}`}
+                {alias && ` - ${contentHandler(alias, platform)}`}
               </span>
             </a>
           </Col>
           <Col span={1}>
-            {song.mv && <MvIcon platform={song.platform} id={song.mv} />}
+            {mv && <MvIcon platform={platform} id={mv} />}
           </Col>
           <Col span={6} className="nowrap">
-            <ArtistLinks platform={song.platform} artists={song.artists} />
+            <ArtistLinks platform={platform} artists={artists} />
           </Col>
           <Col span={6} className="nowrap">
             <a
-              href={buildAlbumLink(song.platform, song.album.id)}
+              href={buildAlbumLink(platform, album.id)}
               target="_blank"
               rel="noreferrer"
-              title={song.album.name}
+              title={contentHandler(album.name, platform)}
             >
-              {song.album.name}
+              {contentHandler(album.name, platform)}
             </a>
           </Col>
           <Col span={1}>
             {
               this.props.showPlatform &&
                 <img
-                  src={logos[song.platform]}
-                  alt={song.platform}
+                  src={logos[platform]}
+                  alt={platform}
                   style={{ display: 'block' }}
                 />
             }
@@ -85,24 +89,13 @@ class SongItem extends Component {
               textAlign: 'right',
             }}
           >
-            {/* <PlayCircleOutlined
-              onClick={this.onPlayBtnClick}
-              className={
-                currentSong && currentSong.newId === song.newId
-                  ? 'play-btn playing' : 'play-btn'
-              }
-              style={{
-                fontSize: 20,
-                display: 'block',
-              }}
-            /> */}
             <Button
               icon={<CaretRightOutlined />}
               shape="circle"
               size="small"
               onClick={this.onPlayBtnClick}
               className={
-                currentSong && currentSong.newId === song.newId
+                currentSong && currentSong.newId === newId
                   ? 'play-btn playing' : 'play-btn'
               }
               style={{
@@ -111,9 +104,6 @@ class SongItem extends Component {
             />
             <AddToPlayingList data={song} />
           </Col>
-          {/* <Col span={1}>
-            <AddToPlayingList data={song} />
-          </Col> */}
         </Row>
       </List.Item>
     );
