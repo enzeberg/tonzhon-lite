@@ -105,10 +105,12 @@ class Player extends Component {
     } else {
       if (prevSong) {
         this.setState({
+          getSongSourceStatus: 'notYet',
           songSource: null,
           songLoaded: false,
           playProgress: 0,
         });
+        this.pause();
       }
     }
   }

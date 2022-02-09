@@ -18,7 +18,7 @@ class SongItem extends Component {
 
   onRowClick() {
     const index = this.props.playingList.findIndex(song =>
-      song.newId === this.props.song.newId);
+                  song.newId === this.props.song.newId);
     if (index === -1) {
       this.props.addToPlayingList(this.props.song);
       this.props.updatePlayIndex(this.props.playingList.length);
