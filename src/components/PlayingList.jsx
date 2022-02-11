@@ -36,9 +36,10 @@ class PlayingList extends Component {
         >
           <Col span={20}>播放列表</Col>
           <Col span={4} style={{ textAlign: 'right' }}>
-            <Button ghost
+            <Button
+              ghost
               icon={<DeleteOutlined />}
-              onClick={this.props.clearPlaylist}
+              onClick={this.props.clearPlayingList}
             >
               清空
             </Button>
@@ -95,7 +96,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    clearPlaylist: () => {
+    clearPlayingList: () => {
       dispatch({ type: 'CLEAR_PLAYING_LIST' });
     },
   };

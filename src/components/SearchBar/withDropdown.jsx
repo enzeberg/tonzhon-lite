@@ -34,7 +34,8 @@ class SearchBar extends Component {
 
     const menu = (
       <Menu selectable onSelect={this.onSelect}>
-        <Menu.ItemGroup key="history"
+        <Menu.ItemGroup
+          key="history"
           title={
             <div
               style={{
@@ -44,7 +45,8 @@ class SearchBar extends Component {
               }}
             >
               <span>搜索历史</span>
-              <Button icon={<DeleteOutlined />}
+              <Button
+                icon={<DeleteOutlined />}
                 type="circle"
                 onClick={() => this.props.clearSearchHistory()}
               />
@@ -76,7 +78,6 @@ class SearchBar extends Component {
       </Dropdown>
     );
   }
-
 }
 
 function mapStateToProps(state) {

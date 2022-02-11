@@ -45,12 +45,8 @@ function TheHeader() {
           <SearchBar />
         </Col>
         <Col span={4} style={{ textAlign: 'right' }}>
-          {/* <a href="https://github.com/enzeberg/tonzhon-lite"
-              target="blank"
-            >
-              <GithubOutlined style={{ fontSize: 'large' }} />
-            </a> */}
-          <Button icon={<GithubOutlined style={{ fontSize: 'large' }} />}
+          <Button
+            icon={<GithubOutlined style={{ fontSize: 'large' }} />}
             href="https://github.com/enzeberg/tonzhon-lite"
             target="_blank"
           >

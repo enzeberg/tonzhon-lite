@@ -22,7 +22,7 @@ class SongItem extends Component {
 
   onPlayBtnClick() {
     const index = this.props.playingList.findIndex(song =>
-      song.newId === this.props.song.newId);
+                    song.newId === this.props.song.newId);
     if (index === -1) {
       this.props.addToPlayingList(this.props.song);
       this.props.updatePlayIndex(this.props.playingList.length);
@@ -36,7 +36,9 @@ class SongItem extends Component {
     const { originalId, newId, platform, name, alias, mv, artists, album } = song;
     return (
       <List.Item style={{ padding: '4px 10px' }}>
-        <Row type="flex" align="middle"
+        <Row
+          type="flex"
+          align="middle"
           style={{
             width: '100%',
             fontSize: 14,
@@ -84,7 +86,8 @@ class SongItem extends Component {
                 />
             }
           </Col>
-          <Col span={2}
+          <Col
+            span={2}
             style={{
               textAlign: 'right',
             }}
@@ -96,7 +99,8 @@ class SongItem extends Component {
               onClick={this.onPlayBtnClick}
               className={
                 currentSong && currentSong.newId === newId
-                  ? 'play-btn playing' : 'play-btn'
+                ? 'play-btn playing'
+                : 'play-btn'
               }
               style={{
                 marginRight: '8px',

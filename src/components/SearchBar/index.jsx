@@ -14,8 +14,7 @@ class SearchBar extends Component {
 
   onSearch(keyword) {
     keyword = keyword.trim();
-    if (keyword !== '' &&
-      keyword !== this.props.keyword) {
+    if (keyword !== '' && keyword !== this.props.keyword) {
       this.props.updateSearchKeyword(keyword);
       this.props.history.push(`/search?keyword=${window.encodeURIComponent(keyword)}`);
     }
@@ -36,7 +35,8 @@ class SearchBar extends Component {
             }}
           >
             <span>搜索历史</span>
-            <Button icon={<DeleteOutlined />}
+            <Button
+              icon={<DeleteOutlined />}
               type="circle"
               onClick={() => this.props.clearSearchHistory()}
             />

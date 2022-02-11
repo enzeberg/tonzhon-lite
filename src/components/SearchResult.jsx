@@ -27,14 +27,6 @@ class SearchResult extends Component {
   render() {
     const { result, provider } = this.props;
 
-    // when the search results are filtered in App.jsx, the following code is useless.
-    // let mainPart;
-    // if (result.searchSuccess) {
-    //   mainPart = <SongList songs={result.data.songs} />;
-    // } else {
-    //   mainPart = <h3>{result.message}</h3>;
-    // }
-
     return (
       <Wrapper
         provider={provider}
@@ -50,7 +42,6 @@ class SearchResult extends Component {
           />
         }
       >
-        {/* {mainPart} */}
         <SongList songs={result.data.songs} />
       </Wrapper>
     );

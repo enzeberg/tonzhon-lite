@@ -10,13 +10,14 @@ class AddToPlayingList extends Component {
   }
 
   handleClick() {
-    this.props.addToPlaylist(this.props.data);
-    message.success('已添加到播放列表');
+    this.props.addToPlayingList(this.props.data);
+    message.success('已添加');
   }
 
   render() {
     return (
-      <Button icon={<PlusOutlined />}
+      <Button
+        icon={<PlusOutlined />}
         onClick={this.handleClick}
       >
         添加到播放列表
@@ -27,7 +28,7 @@ class AddToPlayingList extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addToPlaylist: (data) => {
+    addToPlayingList: (data) => {
       dispatch({ type: 'ADD_LIST_TO_PLAYING_LIST', data });
     },
   };

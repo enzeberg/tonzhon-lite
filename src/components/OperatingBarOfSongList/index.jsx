@@ -13,7 +13,8 @@ class OperatingBarOfSongList extends Component {
   render() {
     return (
       <>
-        <Button icon={<CaretRightOutlined />}
+        <Button
+          icon={<CaretRightOutlined />}
           onClick={() => this.props.playSongList(this.props.songs)}
           style={{
             marginRight: '10px',

@@ -31,7 +31,8 @@ function App(props) {
       </Switch>
       <TheHeader />
       <Content>
-        <div className="container"
+        <div
+          className="container"
           style={{
             marginTop: 60,
             marginBottom: 74,
@@ -75,7 +76,8 @@ function App(props) {
                 }
               }
             />
-            <Route path="/netease-playlist/:playlistId"
+            <Route
+              path="/netease-playlist/:playlistId"
               component={NeteasePlaylistPage}
             />
             <Route path="/*" component={NotFound} />

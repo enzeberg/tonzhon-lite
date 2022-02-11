@@ -12,19 +12,11 @@ class AddToPlayingList extends Component {
   handleClick() {
     const { data } = this.props;
     this.props.addToPlayingList(data);
-    message.success('已添加到播放列表');
+    message.success('已添加');
   }
 
   render() {
     return (
-      // <PlusOutlined
-      //   style={{
-      //     fontSize: 20,
-      //     display: 'block',
-      //   }}
-      //   onClick={this.handleClick}
-      //   title="添加到播放列表"
-      // />
       <Button
         icon={<PlusOutlined />}
         size="small"

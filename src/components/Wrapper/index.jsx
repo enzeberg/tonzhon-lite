@@ -9,7 +9,8 @@ function Wrapper(props) {
   const { provider, pagination, operatingBar } = props;
   const logo = logos[provider];
   return (
-    <div className="white-card"
+    <div
+      className="white-card"
       style={{
         marginTop: '10px',
       }}

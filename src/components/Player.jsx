@@ -245,6 +245,7 @@ class Player extends Component {
     } = this.state;
     const progress = toMinAndSec(playProgress);
     const total = toMinAndSec(songDuration);
+    
     return (
       <div
         style={{
@@ -306,7 +307,10 @@ class Player extends Component {
             />
           </Col>
           <Col span={14} style={{ paddingRight: 40 }}>
-            <Row type="flex" align="middle" justify="space-between"
+            <Row
+              type="flex"
+              align="middle"
+              justify="space-between"
               style={{ height: 20 }}
             >
               {
@@ -398,8 +402,8 @@ class Player extends Component {
           </Col>
           <Col span={1}>
             <Button
-              icon={<DownloadOutlined />}
               ghost
+              icon={<DownloadOutlined />}
               shape="circle"
               href={songSource}
               target="_blank"

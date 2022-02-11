@@ -51,10 +51,13 @@ class PlaylistContainer extends Component {
     const { playlistName, songs } = this.state;
     return (
       <>
-        <Row type="flex" align="middle" justify="space-between"
+        <Row
+          type="flex"
+          align="middle"
+          justify="space-between"
           style={{ marginBottom: '10px' }}
         >
-          <Col span={16} style={{ fontSize: 20 }}>
+          <Col span={16} style={{ fontSize: '20px' }}>
             {playlistName}
           </Col>
           <Col span={8} style={{ textAlign: 'right' }}>

@@ -60,7 +60,9 @@ class SongItem extends Component {
           padding: '0 10px 0 0',
         }}
       >
-        <Row type="flex" align="middle"
+        <Row
+          type="flex"
+          align="middle"
           onClick={this.onRowClick}
           style={{
             width: '100%',

@@ -57,8 +57,8 @@ class HotList extends Component {
         </div>
         {
           this.state.loading
-            ? <Spin />
-            : <SongList songs={songs} />
+          ? <Spin />
+          : <SongList songs={songs} />
         }
       </>
     );
