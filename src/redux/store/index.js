@@ -50,5 +50,4 @@ const updateSearchHistory = (keyword) => {
   store.dispatch({ type: 'UPDATE_SEARCH_HISTORY', data: keyword });
 };
 
-
 export default store;

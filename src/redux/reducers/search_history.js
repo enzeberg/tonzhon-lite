@@ -1,7 +1,4 @@
 let history = localStorage.getItem('searchHistory');
-if (history && !history.includes('[') && !history.includes(']')) {
-  history = false; // 清理旧格式的 searchHistory
-}
 const initialState = (history && JSON.parse(history)) || [];
 const limit = 6;
 

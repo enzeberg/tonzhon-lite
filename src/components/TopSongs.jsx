@@ -37,12 +37,15 @@ class TopSongs extends Component {
   }
 
   render() {
+    const { topSongs } = this.state;
     return (
-      this.state.topSongs.length === 0 ? null : (
+      topSongs.length > 0
+      ? (
         <div className="white-card">
-          <SongList songs={this.state.topSongs} showPlatform />
+          <SongList songs={topSongs} showPlatform />
         </div>
       )
+      : null
     );
   }
 }
