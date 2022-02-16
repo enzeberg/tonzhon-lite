@@ -11,12 +11,10 @@ import MvIcon from '../MvIcon';
 import AddToPlayingList from './AddToPlayingList';
 import './index.css';
 import { buildSongLink, buildAlbumLink } from '../../utils/build_link';
-import contentHandler from '../../utils/content_handler';
 
 class SongItem extends Component {
   constructor(props) {
     super(props);
-
     this.onPlayBtnClick = this.onPlayBtnClick.bind(this);
   }
 
@@ -48,15 +46,14 @@ class SongItem extends Component {
             <a
               href={buildSongLink(platform, originalId)}
               title={
-                `${contentHandler(name, platform)}
-                ${alias ? ` - ${contentHandler(alias, platform)}` : ''}`
+                `${name}${alias ? ` - ${alias}` : ''}`
               }
               target="_blank"
               rel="noreferrer"
             >
-              <span>{contentHandler(name, platform)}</span>
+              <span>{name}</span>
               <span style={{ color: '#999' }}>
-                {alias && ` - ${contentHandler(alias, platform)}`}
+                {alias && ` - ${alias}`}
               </span>
             </a>
           </Col>
@@ -71,9 +68,9 @@ class SongItem extends Component {
               href={buildAlbumLink(platform, album.id)}
               target="_blank"
               rel="noreferrer"
-              title={contentHandler(album.name, platform)}
+              title={album.name}
             >
-              {contentHandler(album.name, platform)}
+              {album.name}
             </a>
           </Col>
           <Col span={1}>
