@@ -16,12 +16,12 @@ class SearchBar extends Component {
     keyword = keyword.trim();
     if (keyword !== '' && keyword !== this.props.keyword) {
       this.props.updateSearchKeyword(keyword);
-      this.props.history.push(`/search?keyword=${window.encodeURIComponent(keyword)}`);
+      this.props.history.push(`/search?keyword=${keyword}`);
     }
   }
 
   render() {
-    const { keyword, searchHistory } = this.props;
+    const { searchHistory } = this.props;
 
     const searchHistoryOptions = [
       {
@@ -31,13 +31,12 @@ class SearchBar extends Component {
             style={{
               alignItems: 'center',
               justifyContent: 'space-between',
-              display: 'flex'
+              display: 'flex',
             }}
           >
             <span>搜索历史</span>
             <Button
               icon={<DeleteOutlined />}
-              type="circle"
               onClick={() => this.props.clearSearchHistory()}
             />
           </div>
@@ -57,7 +56,7 @@ class SearchBar extends Component {
       >
         <Search
           placeholder="歌曲 | 专辑 | 艺人"
-          defaultValue={keyword || ''}
+          // defaultValue={keyword || ''}
           // value={keyword || ''}
           onSearch={this.onSearch}
           enterButton
@@ -69,7 +68,7 @@ class SearchBar extends Component {
 
 function mapStateToProps(state) {
   return {
-    keyword: state.searchKeyword,
+    // keyword: state.searchKeyword,
     searchHistory: state.searchHistory,
   };
 }

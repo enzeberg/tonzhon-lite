@@ -7,10 +7,10 @@ class SearchWithURL extends Component {
   // }
 
   componentDidMount() {
-    const { location, keywordFromStore } = this.props;
-    const keyword = location.search.split('=')[1]; // encoded
-    if (keyword && keyword !== keywordFromStore) {
-      this.props.updateSearchKeyword(window.decodeURIComponent(keyword));
+    const { location } = this.props;
+    const keyword = (new URLSearchParams(location.search)).get('keyword');
+    if (keyword) {
+      this.props.updateSearchKeyword(keyword);
     }
   }
 
@@ -19,11 +19,6 @@ class SearchWithURL extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    keywordFromStore: state.searchKeyword, // encoded
-  };
-}
 function mapDispatchToProps(dispatch) {
   return {
     updateSearchKeyword: (data) => {
@@ -32,4 +27,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchWithURL);
+export default connect(null, mapDispatchToProps)(SearchWithURL);

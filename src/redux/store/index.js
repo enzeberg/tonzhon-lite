@@ -14,7 +14,8 @@ store.subscribe(() => {
     onSearch();
     let resultsResponded = 0;
     providers.forEach((provider) => {
-      fetch(`/api/search?provider=${provider}&keyword=${window.encodeURIComponent(searchKeyword)}`,
+      fetch(
+        `/api/search?provider=${provider}&keyword=${window.encodeURIComponent(searchKeyword)}`,
         {
           // withCredentials: true
           credentials: 'include'
