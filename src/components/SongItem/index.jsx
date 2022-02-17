@@ -9,8 +9,8 @@ import kuwoMusicLogo from './images/kuwo_16.ico';
 import ArtistLinks from '../ArtistLinks';
 import MvIcon from '../MvIcon';
 import AddToPlayingList from './AddToPlayingList';
-import './index.css';
 import { buildSongLink, buildAlbumLink } from '../../utils/build_link';
+import './index.css';
 
 class SongItem extends Component {
   constructor(props) {

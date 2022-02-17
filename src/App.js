@@ -45,20 +45,19 @@ function App(props) {
               render={
                 () => {
                   const filtered = Object.keys(searchResults)
-                    .filter(key => {
-                      const result = searchResults[key];
-                      return result.searchSuccess &&
-                        result.data.totalCount > 0;
+                    .filter(platform => {
+                      const result = searchResults[platform];
+                      return result.searchSuccess && result.data.totalCount > 0;
                     });
                   return (
                     <>
                       <TopSongs />
                       {
-                        filtered.map((key) => (
+                        filtered.map((platform) => (
                           <SearchResult
-                            result={searchResults[key]}
-                            provider={key}
-                            key={key}
+                            key={platform}
+                            result={searchResults[platform]}
+                            platform={platform}
                           />
                         ))
                       }

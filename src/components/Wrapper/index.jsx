@@ -6,8 +6,8 @@ import qqMusicLogo from './images/qq_32.ico';
 import kuwoMusicLogo from './images/kuwo_32.ico';
 
 function Wrapper(props) {
-  const { provider, pagination, operatingBar } = props;
-  const logo = logos[provider];
+  const { platform, pagination, operatingBar } = props;
+  const logo = logos[platform];
   return (
     <div
       className="white-card"
@@ -17,7 +17,7 @@ function Wrapper(props) {
     >
       <Row type="flex" align="middle" style={{ marginBottom: '10px' }}>
         <Col span={10}>
-          <img src={logo} alt={provider} />
+          <img src={logo} alt={platform} />
         </Col>
         <Col span={8}>
           {pagination}

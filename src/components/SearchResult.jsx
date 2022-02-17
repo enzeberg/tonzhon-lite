@@ -13,11 +13,11 @@ class SearchResult extends Component {
   }
 
   onPageChange(page) {
-    const { provider, keyword, onResultResponded } = this.props;
-    fetch(`/api/search?provider=${provider}&keyword=${keyword}&page=${page}`)
+    const { platform, keyword, onResultResponded } = this.props;
+    fetch(`/api/search?keyword=${keyword}&platform=${platform}&page=${page}`)
       .then(res => res.json())
       .then(json => {
-        onResultResponded(provider, json);
+        onResultResponded(platform, json);
       })
       .catch(err => {
         console.log('err ', err);
@@ -25,11 +25,11 @@ class SearchResult extends Component {
   }
 
   render() {
-    const { result, provider } = this.props;
+    const { result, platform } = this.props;
 
     return (
       <Wrapper
-        provider={provider}
+        platform={platform}
         operatingBar={
           <OperatingBarOfSongList songs={result.data.songs} />
         }
@@ -55,8 +55,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    onResultResponded: (provider, data) => {
-      dispatch({ type: 'UPDATE_SEARCH_RESULTS', provider, data });
+    onResultResponded: (platform, data) => {
+      dispatch({ type: 'UPDATE_SEARCH_RESULTS', platform, data });
     }
   };
 }

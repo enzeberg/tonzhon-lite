@@ -5,7 +5,7 @@ const searchResults = (state = initialState, action) => {
     case 'UPDATE_SEARCH_RESULTS':
       return {
         ...state,
-        [action.provider]: action.data
+        [action.platform]: action.data
       }
     case 'CLEAR_RESULTS':
       return {};

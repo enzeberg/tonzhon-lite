@@ -7,8 +7,6 @@ import playingList from './playing_list';
 import playIndex from './play_index';
 
 export default combineReducers({
-  // key: state name, value: state value
-  providers: () => ['netease', 'qq', 'kuwo'],
   searchHistory,
   searchStatus,
   searchResults,
