@@ -41,7 +41,8 @@ function App(props) {
         >
           <Switch>
             <Route exact path="/" component={Hot} />
-            <Route path="/search"
+            <Route
+              path="/search"
               render={
                 () => {
                   const filtered = Object.keys(searchResults)
