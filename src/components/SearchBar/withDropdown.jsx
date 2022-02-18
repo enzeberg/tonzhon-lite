@@ -18,7 +18,7 @@ class SearchBar extends Component {
     if (keyword !== '' &&
       keyword !== this.props.keyword) {
       this.props.updateSearchKeyword(keyword);
-      this.props.history.push(`/search?keyword=${window.encodeURIComponent(keyword)}`);
+      this.props.history.push(`/search?keyword=${keyword}`);
     }
   }
 

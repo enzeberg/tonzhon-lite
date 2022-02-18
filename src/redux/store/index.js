@@ -16,7 +16,7 @@ store.subscribe(() => {
     let resultsResponded = 0;
     platforms.forEach((platform) => {
       fetch(
-        `/api/search?keyword=${encodeURIComponent(searchKeyword)}&platform=${platform}`,
+        `/api/search?keyword=${searchKeyword}&platform=${platform}`,
         {
           // withCredentials: true
           credentials: 'include'
