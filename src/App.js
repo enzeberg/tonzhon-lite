@@ -6,7 +6,7 @@ import { useLocation } from 'react-router';
 
 import TheHeader from './components/TheHeader';
 // import TheFooter from './components/Footer';
-import SearchResult from './components/SearchResult';
+import Result from './components/Result';
 import SearchWithURL from './components/SearchWithURL';
 import NotFound from './components/NotFound';
 import TopSongs from './components/TopSongs';
@@ -51,7 +51,7 @@ function App(props) {
                       <TopSongs />
                       {
                         platforms.map((platform) => (
-                          <SearchResult
+                          <Result
                             key={platform}
                             platform={platform}
                             data={searchResults[platform]}

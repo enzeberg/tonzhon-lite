@@ -24,8 +24,8 @@ store.subscribe(() => {
       )
         .then(res => res.json())
         .then(json => {
-          const { searchSuccess, data } = json;
-          if (searchSuccess && data.totalCount > 0) {
+          const { success, data } = json;
+          if (success && data.total > 0) {
             onResultResponded(platform, data);
           }
           ++resultsResponded;
