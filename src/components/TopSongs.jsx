@@ -12,27 +12,27 @@ class TopSongs extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const currentResults = this.props.searchResults;
-    if (currentResults !== prevProps.searchResults) {
-      // changing search keyword will cause 'CLEAR_RESULTS', which means the 
-      // topSongs should be cleared too.
-      if (Object.keys(currentResults).length === 0) {
+    const { searchResults } = this.props;
+    if (searchResults !== prevProps.searchResults) {
+      const platforms = Object.keys(searchResults);
+      if (platforms.length === 0) {
         this.setState({
           topSongs: []
         });
-      }
-      Object.keys(currentResults).forEach((key) => {
-        if (this.state.topSongs.every((song) => song.platform !== key)) {
-          if (currentResults[key].searchSuccess) {
+      } else {
+        const prevPlatforms = Object.keys(prevProps.searchResults);
+        // don't update TopSongs when switch page in SearchResult.
+        if (platforms.length > prevPlatforms.length) {
+          platforms.forEach((platform) => {
             this.setState({
               topSongs: [
                 ...this.state.topSongs,
-                currentResults[key].data.songs[0]
+                searchResults[platform].songs[0]
               ]
             });
-          }
+          });
         }
-      });
+      }
     }
   }
 

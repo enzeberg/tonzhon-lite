@@ -13,11 +13,14 @@ class SearchResult extends Component {
   }
 
   onPageChange(page) {
-    const { platform, keyword, onResultResponded } = this.props;
+    const { keyword, platform, onResultResponded } = this.props;
     fetch(`/api/search?keyword=${keyword}&platform=${platform}&page=${page}`)
       .then(res => res.json())
       .then(json => {
-        onResultResponded(platform, json);
+        const { searchSuccess, data } = json;
+        if (searchSuccess && data.totalCount > 0) {
+          onResultResponded(platform, data);
+        }
       })
       .catch(err => {
         console.log('err ', err);
@@ -25,24 +28,25 @@ class SearchResult extends Component {
   }
 
   render() {
-    const { result, platform } = this.props;
+    const { platform, data } = this.props;
+    const { songs, totalCount } = data;
 
     return (
       <Wrapper
         platform={platform}
         operatingBar={
-          <OperatingBarOfSongList songs={result.data.songs} />
+          <OperatingBarOfSongList songs={songs} />
         }
         pagination={
           <Pagination
             simple
             onChange={this.onPageChange}
             defaultPageSize={4}
-            total={result.data.totalCount}
+            total={totalCount}
           />
         }
       >
-        <SongList songs={result.data.songs} />
+        <SongList songs={songs} />
       </Wrapper>
     );
   }
@@ -56,7 +60,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onResultResponded: (platform, data) => {
-      dispatch({ type: 'UPDATE_SEARCH_RESULTS', platform, data });
+      dispatch({ type: 'UPDATE_SEARCH_RESULT', platform, data });
     }
   };
 }

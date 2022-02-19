@@ -8,7 +8,7 @@ let lastKeyword = searchKeyword;
 
 store.subscribe(() => {
   const { searchKeyword } = store.getState();
-  if (lastKeyword !== searchKeyword) {
+  if (searchKeyword !== lastKeyword) {
     // 更新 lastKeyword 必须放在包含dispatch方法的函数前面，否则会造成无限递归
     lastKeyword = searchKeyword;
     updateSearchHistory(searchKeyword);
@@ -24,8 +24,11 @@ store.subscribe(() => {
       )
         .then(res => res.json())
         .then(json => {
-          onResultResponded(platform, json);
-          resultsResponded++;
+          const { searchSuccess, data } = json;
+          if (searchSuccess && data.totalCount > 0) {
+            onResultResponded(platform, data);
+          }
+          ++resultsResponded;
           if (resultsResponded === platforms.length) {
             searchEnded();
           }
@@ -44,7 +47,7 @@ const onSearch = () => {
 
 const onResultResponded = (platform, data) => {
   store.dispatch({
-    type: 'UPDATE_SEARCH_RESULTS', platform, data
+    type: 'INITIAL_SEARCH_RESULTS', platform, data
   });
 };
 

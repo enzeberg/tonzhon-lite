@@ -45,25 +45,21 @@ function App(props) {
               path="/search"
               render={
                 () => {
-                  const filtered = Object.keys(searchResults)
-                    .filter(platform => {
-                      const result = searchResults[platform];
-                      return result.searchSuccess && result.data.totalCount > 0;
-                    });
+                  const platforms = Object.keys(searchResults);
                   return (
                     <>
                       <TopSongs />
                       {
-                        filtered.map((platform) => (
+                        platforms.map((platform) => (
                           <SearchResult
                             key={platform}
-                            result={searchResults[platform]}
                             platform={platform}
+                            data={searchResults[platform]}
                           />
                         ))
                       }
                       {
-                        filtered.length === 0 && searchStatus === 'done' &&
+                        platforms.length === 0 && searchStatus === 'done' &&
                         <div className="white-card">
                           未搜索到相关歌曲。
                         </div>
