@@ -6,7 +6,7 @@ import SongList from './SongList';
 import Wrapper from './Wrapper';
 import OperatingBarOfSongList from './OperatingBarOfSongList';
 
-class SearchResult extends Component {
+class Result extends Component {
   constructor(props) {
     super(props);
     this.onPageChange = this.onPageChange.bind(this);
@@ -65,4 +65,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);
+export default connect(mapStateToProps, mapDispatchToProps)(Result);

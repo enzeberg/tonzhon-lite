@@ -9,14 +9,12 @@ module.exports = {
           lessOptions: {
             modifyVars: {
               '@primary-color': 'orange',
-              '@layout-body-background': 'white',
+              '@layout-body-background': 'whitesmoke',
               '@layout-header-background': 'white',
-              '@layout-header-height': 'auto',
+              '@layout-header-height': '50px',
               '@layout-trigger-height': 'auto',
               '@layout-zero-trigger-height': 'auto',
-              '@layout-header-padding': 0,
-              '@layout-footer-padding': 0,
-              '@layout-footer-background': '#f7f7f7',
+              '@layout-header-padding': '6px 0px',
             },
             javascriptEnabled: true,
           },

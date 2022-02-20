@@ -14,10 +14,8 @@ function TheHeader() {
       style={{
         position: 'fixed',
         width: '100%',
-        height: 50,
         zIndex: 2,
         // borderBottom: '1px solid #DBDBDB',
-        padding: '6px 0',
         boxShadow: '0 1px 3px rgba(26,26,26,.1)',
       }}
     >

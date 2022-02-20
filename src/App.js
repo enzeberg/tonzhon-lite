@@ -21,11 +21,7 @@ function App(props) {
   useScrollbarResetter();
   let { searchStatus, searchResults } = props;
   return (
-    <Layout
-      style={{
-        backgroundColor: '#f7f7f7',
-      }}
-    >
+    <Layout>
       <Switch>
         <Route path="/search" component={SearchWithURL} />
       </Switch>
