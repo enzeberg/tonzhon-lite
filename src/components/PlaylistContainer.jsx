@@ -37,10 +37,11 @@ class PlaylistContainer extends Component {
         this.setState({
           loading: false,
         });
-        if (json.status === 'ok') {
+        const { success, data } = json;
+        if (success) {
           this.setState({
-            playlistName: json.data.name,
-            songs: json.data.songs,
+            playlistName: data.name,
+            songs: data.songs,
           });
         }
       })

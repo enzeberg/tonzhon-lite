@@ -31,10 +31,11 @@ class HotList extends Component {
       credentials: 'include',
     }).then(res => res.json())
       .then(json => {
-        if (json.status === 'ok') {
+        const { success, data } = json;
+        if (success) {
           this.setState({
             loading: false,
-            songs: json.data.songs,
+            songs: data.songs,
           });
         }
       })

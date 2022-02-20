@@ -158,10 +158,11 @@ class Player extends Component {
     fetch(`/api/song_source/${platform}/${originalId}`)
       .then(res => res.json())
       .then(json => {
-        if (json.status === 'ok') {
+        const { success, data } = json;
+        if (success) {
           this.setState({
             getSongSourceStatus: 'ok',
-            songSource: json.data.songSource,
+            songSource: data.songSource,
           }, callback);
         } else {
           this.failedToGetSongSource();
