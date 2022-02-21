@@ -9,7 +9,6 @@
 - 下载歌曲
 - 导入网易云音乐的**完整**歌单
  （如：[http://lite.tonzhon.com/netease-playlist/5132177936](http://lite.tonzhon.com/netease-playlist/5132177936))
-- 热歌榜（包括网易云音乐、酷我音乐和QQ音乐）
 
 ## 技术
 - React
