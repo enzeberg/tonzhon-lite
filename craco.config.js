@@ -11,7 +11,7 @@ module.exports = {
               '@primary-color': 'orange',
               '@layout-body-background': 'whitesmoke',
               '@layout-header-background': 'white',
-              '@layout-header-height': '50px',
+              '@layout-header-height': 'auto',
               '@layout-trigger-height': 'auto',
               '@layout-zero-trigger-height': 'auto',
               '@layout-header-padding': '6px 0px',

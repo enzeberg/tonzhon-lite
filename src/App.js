@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Layout, Spin } from 'antd';
 import { Switch, Route } from 'react-router-dom';
 import { useLocation } from 'react-router';
 
 import TheHeader from './components/TheHeader';
-// import TheFooter from './components/Footer';
+import NeteasePlaylistPage from './components/NeteasePlaylistPage';
+import TopSongs from './components/TopSongs';
 import Result from './components/Result';
 import SearchWithURL from './components/SearchWithURL';
 import NotFound from './components/NotFound';
-import TopSongs from './components/TopSongs';
 import Player from './components/Player';
-import Hot from './components/Hot';
-import NeteasePlaylistPage from './components/NeteasePlaylistPage';
 import './App.less';
 
 const { Content } = Layout;
@@ -36,7 +34,7 @@ function App(props) {
           }}
         >
           <Switch>
-            <Route exact path="/" component={Hot} />
+            <Route exact path="/" component={NeteasePlaylistPage} />
             <Route
               path="/search"
               render={
@@ -68,17 +66,10 @@ function App(props) {
                 }
               }
             />
-            <Route
-              path="/netease-playlist/:playlistId"
-              component={NeteasePlaylistPage}
-            />
             <Route path="/*" component={NotFound} />
           </Switch>
         </div>
       </Content>
-      {/* <Footer style={{ marginBottom: 80 }}>
-          <TheFooter />
-        </Footer> */}
       <Player />
     </Layout>
   );

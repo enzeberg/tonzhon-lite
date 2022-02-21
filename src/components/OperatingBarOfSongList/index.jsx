@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Button } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';

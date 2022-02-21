@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdOndemandVideo } from 'react-icons/md';
 
 import { buildMvLink } from '../utils/build_link';

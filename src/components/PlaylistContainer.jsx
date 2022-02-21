@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Row, Col, Spin } from 'antd';
 
 import SongList from './SongList';
@@ -49,7 +49,7 @@ class PlaylistContainer extends Component {
   }
 
   render() {
-    const { playlistName, songs } = this.state;
+    const { playlistName, songs, loading } = this.state;
     return (
       <>
         <Row
@@ -69,7 +69,7 @@ class PlaylistContainer extends Component {
           </Col>
         </Row>
         {
-          this.state.loading
+          loading
           ? <Spin />
           : (
             songs.length > 0

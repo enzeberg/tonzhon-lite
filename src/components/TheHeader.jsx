@@ -1,4 +1,3 @@
-import React from 'react';
 import { Layout, Row, Col, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { GithubOutlined } from '@ant-design/icons';
@@ -15,34 +14,33 @@ function TheHeader() {
         position: 'fixed',
         width: '100%',
         zIndex: 2,
-        // borderBottom: '1px solid #DBDBDB',
         boxShadow: '0 1px 3px rgba(26,26,26,.1)',
       }}
     >
       <Row type="flex" align="middle" className="container">
-        <Col span={6}>
+        <Col span={5}>
           <Link to="/">
             <h1
               style={{
                 display: 'inline',
                 color: themeColor,
                 fontWeight: 360,
-                fontSize: 'x-large',
+                fontSize: '24px',
               }}
             >
               Tonzhon Lite
             </h1>
           </Link>
         </Col>
-        <Col span={4}>
+        {/* <Col span={4}>
           <Link to="/netease-playlist/6774517990" style={{ fontSize: 16 }}>
             网易歌单
           </Link>
-        </Col>
-        <Col span={10}>
+        </Col> */}
+        <Col span={14}>
           <SearchBar />
         </Col>
-        <Col span={4} style={{ textAlign: 'right' }}>
+        <Col span={5} style={{ textAlign: 'right' }}>
           <Button
             icon={<GithubOutlined style={{ fontSize: 'large' }} />}
             href="https://github.com/enzeberg/tonzhon-lite"

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { buildArtistLink } from '../utils/build_link';
 
 function ArtistLinks({ platform, artists, color }) {

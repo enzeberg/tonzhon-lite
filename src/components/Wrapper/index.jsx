@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row, Col } from 'antd';
 
 import neteaseMusicLogo from './images/netease_32.ico';

@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
-function Artists({ artists, platform }) {
+function Artists({ artists }) {
   return artists.map((artist) => (
     <Fragment key={artist.id}>
       {artist.name}
