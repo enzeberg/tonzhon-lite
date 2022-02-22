@@ -19,11 +19,11 @@ class SongItem extends Component {
   }
 
   onPlayBtnClick() {
-    const index = this.props.playingList.findIndex(song =>
-                    song.newId === this.props.song.newId);
+    const { playingList, song } = this.props;
+    const index = playingList.findIndex(item => item.newId === song.newId);
     if (index === -1) {
-      this.props.addToPlayingList(this.props.song);
-      this.props.updatePlayIndex(this.props.playingList.length);
+      this.props.addToPlayingList(song);
+      this.props.updatePlayIndex(playingList.length);
     } else {
       this.props.updatePlayIndex(index);
     }
@@ -103,7 +103,7 @@ class SongItem extends Component {
                 marginRight: '8px',
               }}
             />
-            <AddToPlayingList data={song} />
+            <AddToPlayingList song={song} />
           </Col>
         </Row>
       </List.Item>

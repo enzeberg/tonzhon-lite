@@ -10,8 +10,7 @@ class AddToPlayingList extends Component {
   }
 
   handleClick() {
-    const { data } = this.props;
-    this.props.addToPlayingList(data);
+    this.props.addToPlayingList(this.props.song);
     message.success('已添加');
   }
 
