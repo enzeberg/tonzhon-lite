@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import SongList from './SongList';
 import Wrapper from './Wrapper';
-import OperatingBarOfSongList from './OperatingBarOfSongList';
+import TopButtons from './TopButtons';
 
 class Result extends Component {
   constructor(props) {
@@ -34,8 +34,8 @@ class Result extends Component {
     return (
       <Wrapper
         platform={platform}
-        operatingBar={
-          <OperatingBarOfSongList songs={songs} />
+        buttons={
+          <TopButtons songs={songs} />
         }
         pagination={
           <Pagination

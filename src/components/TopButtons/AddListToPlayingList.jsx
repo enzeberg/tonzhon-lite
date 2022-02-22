@@ -3,14 +3,14 @@ import { message, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
-class AddToPlayingList extends Component {
+class AddListToPlayingList extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    this.props.addToPlayingList(this.props.data);
+    this.props.addListToPlayingList(this.props.list);
     message.success('已添加');
   }
 
@@ -28,10 +28,10 @@ class AddToPlayingList extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addToPlayingList: (data) => {
+    addListToPlayingList: (data) => {
       dispatch({ type: 'ADD_LIST_TO_PLAYING_LIST', data });
     },
   };
 }
 
-export default connect(null, mapDispatchToProps)(AddToPlayingList);
+export default connect(null, mapDispatchToProps)(AddListToPlayingList);

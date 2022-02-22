@@ -3,9 +3,9 @@ import { Button } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
-import AddToPlayingList from './AddToPlayingList';
+import AddListToPlayingList from './AddListToPlayingList';
 
-class OperatingBarOfSongList extends Component {
+class TopButtons extends Component {
   // constructor(props) {
   //   super(props);
   // }
@@ -22,7 +22,7 @@ class OperatingBarOfSongList extends Component {
         >
           播放
         </Button>
-        <AddToPlayingList data={this.props.songs} />
+        <AddListToPlayingList list={this.props.songs} />
       </>
     );
   }
@@ -37,4 +37,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(OperatingBarOfSongList);
+export default connect(null, mapDispatchToProps)(TopButtons);

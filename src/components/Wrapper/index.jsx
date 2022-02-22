@@ -5,7 +5,7 @@ import qqMusicLogo from './images/qq_32.ico';
 import kuwoMusicLogo from './images/kuwo_32.ico';
 
 function Wrapper(props) {
-  const { platform, pagination, operatingBar } = props;
+  const { platform, pagination, buttons } = props;
   const logo = logos[platform];
   return (
     <div
@@ -22,7 +22,7 @@ function Wrapper(props) {
           {pagination}
         </Col>
         <Col span={6} style={{ textAlign: 'right' }}>
-          {operatingBar}
+          {buttons}
         </Col>
       </Row>
       {props.children}

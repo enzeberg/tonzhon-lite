@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Row, Col, Spin } from 'antd';
 
 import SongList from './SongList';
-import OperatingBarOfSongList from './OperatingBarOfSongList';
+import TopButtons from './TopButtons';
 
 class PlaylistContainer extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class PlaylistContainer extends Component {
           <Col span={8} style={{ textAlign: 'right' }}>
             {
               songs.length > 0 &&
-              <OperatingBarOfSongList songs={songs} />
+              <TopButtons songs={songs} />
             }
           </Col>
         </Row>
