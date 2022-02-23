@@ -1,15 +1,13 @@
 import { createStore } from 'redux';
 import reducers from '../reducers';
 
-const store = createStore(reducers);
-const { searchKeyword } = store.getState();
 const platforms = ['qq', 'netease', 'kuwo'];
-let lastKeyword = searchKeyword;
+const store = createStore(reducers);
+let lastKeyword = store.getState().searchKeyword;
 
 store.subscribe(() => {
   const { searchKeyword } = store.getState();
   if (searchKeyword !== lastKeyword) {
-    // 更新 lastKeyword 必须放在包含dispatch方法的函数前面，否则会造成无限递归
     lastKeyword = searchKeyword;
     updateSearchHistory(searchKeyword);
     onSearch();
