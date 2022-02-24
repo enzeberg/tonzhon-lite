@@ -1,31 +1,24 @@
-import { Component } from 'react';
 import { Button } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
 import AddListToPlayingList from './AddListToPlayingList';
 
-class TopButtons extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
-  render() {
-    return (
-      <>
-        <Button
-          icon={<CaretRightOutlined />}
-          onClick={() => this.props.playSongList(this.props.songs)}
-          style={{
-            marginRight: '10px',
-          }}
-        >
-          播放
-        </Button>
-        <AddListToPlayingList list={this.props.songs} />
-      </>
-    );
-  }
+function TopButtons({ songs, playSongList }) {
+  return (
+    <>
+      <Button
+        icon={<CaretRightOutlined />}
+        onClick={() => playSongList(songs)}
+        style={{
+          marginRight: '10px',
+        }}
+      >
+        播放
+      </Button>
+      <AddListToPlayingList list={songs} />
+    </>
+  );
 }
 
 function mapDispatchToProps(dispatch) {

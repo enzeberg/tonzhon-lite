@@ -4,8 +4,7 @@ import neteaseMusicLogo from './images/netease_32.ico';
 import qqMusicLogo from './images/qq_32.ico';
 import kuwoMusicLogo from './images/kuwo_32.ico';
 
-function Wrapper(props) {
-  const { platform, pagination, buttons } = props;
+function Wrapper({ platform, pagination, buttons, children }) {
   const logo = logos[platform];
   return (
     <div
@@ -25,7 +24,7 @@ function Wrapper(props) {
           {buttons}
         </Col>
       </Row>
-      {props.children}
+      {children}
     </div>
   );
 }

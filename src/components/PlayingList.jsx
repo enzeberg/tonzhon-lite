@@ -1,64 +1,58 @@
-import { Component } from 'react';
 import { DeleteOutlined } from '@ant-design/icons';
 import { Button, List, Row, Col } from 'antd';
 import { connect } from 'react-redux';
 
 import ItemInPlayingList from './SongItem/in_playing_list';
 
-class PlayingList extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
-  render() {
-    return (
-      <div
+function PlayingList({ dataSource, clearPlayingList }) {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        bottom: '64px',
+        right: `${(document.body.clientWidth - 1000) / 2}px`,
+        width: '600px',
+        borderTopLeftRadius: '5px',
+        borderTopRightRadius: '5px',
+        background: 'rgb(70,70,70)',
+      }}
+    >
+      <Row
+        type="flex"
+        align="middle"
+        justify="space-between"
         style={{
-          position: 'absolute',
-          bottom: '64px',
-          right: `${(document.body.clientWidth - 1000) / 2}px`,
-          width: '600px',
+          padding: '10px',
+          background: '#222',
           borderTopLeftRadius: '5px',
           borderTopRightRadius: '5px',
-          background: 'rgb(70,70,70)',
         }}
       >
-        <Row
-          type="flex"
-          align="middle"
-          justify="space-between"
-          style={{
-            padding: '10px',
-            background: '#222',
-            borderTopLeftRadius: '5px',
-            borderTopRightRadius: '5px',
-          }}
-        >
-          <Col span={20}>播放列表</Col>
-          <Col span={4} style={{ textAlign: 'right' }}>
-            <Button
-              ghost
-              icon={<DeleteOutlined />}
-              onClick={this.props.clearPlayingList}
-            >
-              清空
-            </Button>
-          </Col>
-        </Row>
-        <List
-          id="playing-list"
-          itemLayout="horizontal"
-          dataSource={this.props.dataSource}
-          renderItem={song => (
-            <ItemInPlayingList song={song} />
-          )}
-          style={{
-            color: 'white',
-            overflow: 'auto',
-            height: '280px',
-          }}
-        />
-        <style jsx="true">{`
+        <Col span={20}>播放列表</Col>
+        <Col span={4} style={{ textAlign: 'right' }}>
+          <Button
+            ghost
+            icon={<DeleteOutlined />}
+            onClick={clearPlayingList}
+          >
+            清空
+          </Button>
+        </Col>
+      </Row>
+      <List
+        id="playing-list"
+        itemLayout="horizontal"
+        dataSource={dataSource}
+        renderItem={song => (
+          <ItemInPlayingList song={song} />
+        )}
+        style={{
+          color: 'white',
+          overflow: 'auto',
+          height: '280px',
+        }}
+      />
+      <style jsx="true">{`
           #playing-list::-webkit-scrollbar {
             background-color: #222;
             width: 7px;
@@ -84,9 +78,8 @@ class PlayingList extends Component {
             background-color: rgb(60, 60, 60);
           }
         `}</style>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 function mapStateToProps(state) {

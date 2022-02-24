@@ -32,17 +32,14 @@ function TheHeader() {
             </h1>
           </Link>
         </Col>
-        {/* <Col span={4}>
-          <Link to="/netease-playlist/6774517990" style={{ fontSize: 16 }}>
-            网易歌单
-          </Link>
-        </Col> */}
         <Col span={14}>
           <SearchBar />
         </Col>
         <Col span={5} style={{ textAlign: 'right' }}>
           <Button
-            icon={<GithubOutlined style={{ fontSize: 'large' }} />}
+            icon={
+              <GithubOutlined style={{ fontSize: 'large' }} />
+            }
             href="https://github.com/enzeberg/tonzhon-lite"
             target="_blank"
           >
