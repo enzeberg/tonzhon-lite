@@ -18,15 +18,15 @@ import {
 import { FiVolume2 as VolumeIcon, FiVolumeX as MuteIcon } from 'react-icons/fi';
 
 import ArtistLinks from './ArtistLinks';
-import MvIcon from './MvIcon';
+import MvLink from './MvLink';
 import PlayingList from './PlayingList';
 import toMinAndSec from '../utils/to_min_and_sec';
 import { buildSongLink } from '../utils/build_link';
 
 const playModeIcons = {
-  loop: <LoopIcon className="player-icon" />,
-  single: <SingleIcon className="player-icon" />,
-  shuffle: <ShuffleIcon className="player-icon" />,
+  loop: <LoopIcon className="icon-in-player" />,
+  single: <SingleIcon className="icon-in-player" />,
+  shuffle: <ShuffleIcon className="icon-in-player" />,
 };
 
 const playModes = ['loop', 'single', 'shuffle', ];
@@ -336,7 +336,7 @@ class Player extends Component {
                     <Col span={2}>
                       {
                         currentSong.mv &&
-                        <MvIcon
+                        <MvLink
                           platform={currentSong.platform}
                           id={currentSong.mv}
                           color="white"
@@ -434,8 +434,8 @@ class Player extends Component {
                 >
                   {
                     this.state.muted
-                    ? <MuteIcon className="player-icon" />
-                    : <VolumeIcon className="player-icon" />
+                    ? <MuteIcon className="icon-in-player" />
+                    : <VolumeIcon className="icon-in-player" />
                   }
                 </button>
               </Col>

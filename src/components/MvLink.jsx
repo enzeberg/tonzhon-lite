@@ -2,7 +2,7 @@ import { MdOndemandVideo } from 'react-icons/md';
 
 import { buildMvLink } from '../utils/build_link';
 
-function MvIcon({ platform, id, color }) {
+function MvLink({ platform, id, color }) {
   return (
     <a
       href={buildMvLink(platform, id)}
@@ -21,4 +21,4 @@ function MvIcon({ platform, id, color }) {
   );
 };
 
-export default MvIcon;
+export default MvLink;

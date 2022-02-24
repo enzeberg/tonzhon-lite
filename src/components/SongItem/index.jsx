@@ -7,7 +7,7 @@ import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
 import ArtistLinks from '../ArtistLinks';
-import MvIcon from '../MvIcon';
+import MvLink from '../MvLink';
 import AddToPlayingList from './AddToPlayingList';
 import { buildSongLink, buildAlbumLink } from '../../utils/build_link';
 import './index.css';
@@ -58,7 +58,7 @@ class SongItem extends Component {
             </a>
           </Col>
           <Col span={1}>
-            {mv && <MvIcon platform={platform} id={mv} />}
+            {mv && <MvLink platform={platform} id={mv} />}
           </Col>
           <Col span={6} className="nowrap">
             <ArtistLinks platform={platform} artists={artists} />
