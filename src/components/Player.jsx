@@ -9,7 +9,7 @@ import {
   DownloadOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons';
-import { Row, Col, Slider, Button, Tooltip, message } from 'antd';
+import { Row, Col, Slider, Button, message } from 'antd';
 import {
   MdRepeat as LoopIcon,
   MdRepeatOne as SingleIcon,
@@ -23,17 +23,11 @@ import PlayingList from './PlayingList';
 import toMinAndSec from '../utils/to_min_and_sec';
 import { buildSongLink } from '../utils/build_link';
 
+const playModes = ['loop', 'single', 'shuffle'];
 const playModeIcons = {
-  loop: <LoopIcon className="icon-in-player" />,
-  single: <SingleIcon className="icon-in-player" />,
-  shuffle: <ShuffleIcon className="icon-in-player" />,
-};
-
-const playModes = ['loop', 'single', 'shuffle', ];
-const modeExplanations = {
-  loop: '循环',
-  single: '单曲循环',
-  shuffle: '随机',
+  loop: <LoopIcon className="icon-in-player" title="循环" />,
+  single: <SingleIcon className="icon-in-player" title="单曲循环" />,
+  shuffle: <ShuffleIcon className="icon-in-player" title="随机" />,
 };
 
 class Player extends Component {
@@ -412,18 +406,14 @@ class Player extends Component {
             />
           </Col>
           <Col span={1} style={{ paddingLeft: 3 }}>
-            <Tooltip
-              title={modeExplanations[this.state.playMode]}
+            <button
+              className="in-player"
+              onClick={this.onPlayModeBtnClick}
             >
-              <button
-                className="in-player"
-                onClick={this.onPlayModeBtnClick}
-              >
-                {
-                  playModeIcons[this.state.playMode]
-                }
-              </button>
-            </Tooltip>
+              {
+                playModeIcons[this.state.playMode]
+              }
+            </button>
           </Col>
           <Col span={3}>
             <Row type="flex" align="middle">

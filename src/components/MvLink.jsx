@@ -13,7 +13,7 @@ function MvLink({ platform, id, color }) {
       <MdOndemandVideo
         style={{
           display: 'block',
-          fontSize: 20,
+          fontSize: '20px',
           color,
         }}
       />
