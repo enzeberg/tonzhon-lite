@@ -21,6 +21,8 @@ function buildMvLink(platform, id) {
       return `${qq}mv/${id}`;
     case 'netease':
       return `${netease}mv?id=${id}`;
+    case 'kuwo':
+      return `${kuwo}mvplay/${id}`;
     default:
       return;
   }
