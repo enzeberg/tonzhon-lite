@@ -8,7 +8,6 @@
 - 播放
 - 下载歌曲
 - 导入网易云音乐的**完整**歌单
- （如：[http://lite.tonzhon.com/netease-playlist/5132177936](http://lite.tonzhon.com/netease-playlist/5132177936))
 
 ## 技术
 - React
@@ -19,9 +18,7 @@
 ## 运行
     git clone https://github.com/enzeberg/tonzhon-lite.git
     cd tonzhon-lite
-    # Install dependencies
     yarn
-    # Start the app
     yarn start
 
 ## License
