@@ -11,7 +11,7 @@ class AddListToPlayingList extends Component {
 
   handleClick() {
     this.props.addListToPlayingList(this.props.list);
-    message.success('已添加');
+    message.success('Added.');
   }
 
   render() {

@@ -11,7 +11,7 @@ class AddToPlayingList extends Component {
 
   handleClick() {
     this.props.addToPlayingList(this.props.song);
-    message.success('已添加');
+    message.success('Added.');
   }
 
   render() {
@@ -19,7 +19,6 @@ class AddToPlayingList extends Component {
       <Button
         icon={<PlusOutlined />}
         size="small"
-        title="添加到播放列表"
         onClick={this.handleClick}
       />
     );
