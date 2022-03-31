@@ -1,7 +1,5 @@
 # tonzhon-lite
 
-<h3>将QQ音乐、网易云音乐和酷我音乐上的歌添加到一个列表来播放！</h3>
-
 ## 功能
 - 搜索
  (支持使用 query string 搜索，如: [http://lite.tonzhon.com/search?keyword=%E5%9B%9E%E6%A2%A6%E6%B8%B8%E4%BB%99](http://lite.tonzhon.com/search?keyword=%E5%9B%9E%E6%A2%A6%E6%B8%B8%E4%BB%99))
