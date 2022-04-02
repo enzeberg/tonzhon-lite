@@ -458,8 +458,8 @@ class Player extends Component {
 }
 
 const platforms = {
-  qq: 'QQ Music',
-  netease: 'Netease Music',
+  qq: 'QQ',
+  netease: 'Netease',
   kuwo: 'Kuwo',
 };
 
