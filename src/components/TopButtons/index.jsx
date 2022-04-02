@@ -14,7 +14,7 @@ function TopButtons({ songs, playSongList }) {
           marginRight: '10px',
         }}
       >
-        播放
+        Play
       </Button>
       <AddListToPlayingList list={songs} />
     </>

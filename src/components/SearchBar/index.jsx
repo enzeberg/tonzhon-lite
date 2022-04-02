@@ -25,7 +25,6 @@ class SearchBar extends Component {
 
     const searchHistoryOptions = [
       {
-        // label: '搜索历史',
         label: (
           <div
             style={{
@@ -34,7 +33,7 @@ class SearchBar extends Component {
               display: 'flex',
             }}
           >
-            <span>搜索历史</span>
+            <span>Search History</span>
             <Button
               icon={<DeleteOutlined />}
               onClick={() => this.props.clearSearchHistory()}
@@ -55,7 +54,7 @@ class SearchBar extends Component {
         defaultActiveFirstOption={false}
       >
         <Search
-          placeholder="歌曲 | 专辑 | 艺人"
+          placeholder="Song | Album | Artist"
           // defaultValue={keyword || ''}
           // value={keyword || ''}
           onSearch={this.onSearch}

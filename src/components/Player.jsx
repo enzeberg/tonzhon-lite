@@ -25,9 +25,9 @@ import { buildSongLink } from '../utils/build_link';
 
 const playModes = ['loop', 'single', 'shuffle'];
 const playModeIcons = {
-  loop: <LoopIcon className="icon-in-player" title="循环" />,
-  single: <SingleIcon className="icon-in-player" title="单曲循环" />,
-  shuffle: <ShuffleIcon className="icon-in-player" title="随机" />,
+  loop: <LoopIcon className="icon-in-player" />,
+  single: <SingleIcon className="icon-in-player" />,
+  shuffle: <ShuffleIcon className="icon-in-player" />,
 };
 
 class Player extends Component {
@@ -171,9 +171,9 @@ class Player extends Component {
     this.setState({
       getSongSourceStatus: 'failed',
     }, () => {
-      message.error('加载失败');
+      message.error('Failed to get song source');
       this.playNext('forward');
-      message.info('已跳过');
+      message.info('Skipped');
     });
   }
 
@@ -355,7 +355,7 @@ class Player extends Component {
                         fontWeight: 'lighter',
                       }}
                     >
-                      {`来自${platforms[currentSong.platform]}`}
+                      {`Provided by ${platforms[currentSong.platform]}`}
                     </Col>
                     <Col span={4} className="gray-in-player" style={{ textAlign: 'right' }}>
                       {
@@ -373,7 +373,7 @@ class Player extends Component {
                             getSongSourceStatus === 'ok'
                             ? <LoadingOutlined />
                             : (
-                              getSongSourceStatus === 'failed' && '加载失败'
+                              getSongSourceStatus === 'failed' && 'No source'
                             )
                           )
                         )
@@ -445,7 +445,7 @@ class Player extends Component {
               ghost
               icon={<UnorderedListOutlined />}
               onClick={this.onPlayingListBtnClick}
-              title="播放列表"
+              title="Playing List"
             />
           </Col>
         </Row>
@@ -458,9 +458,9 @@ class Player extends Component {
 }
 
 const platforms = {
-  qq: 'QQ音乐',
-  netease: '网易云音乐',
-  kuwo: '酷我音乐',
+  qq: 'QQ Music',
+  netease: 'Netease Music',
+  kuwo: 'Kuwo',
 };
 
 function mapStateToProps(state) {

@@ -24,12 +24,12 @@ function NeteasePlaylistPage() {
     >
       <Sider style={{ background: 'none', marginRight: 20 }}>
         <div style={{ marginBottom: '10px' }}>
-          <span style={{ fontSize: '22px' }}>网易歌单</span>
+          <span style={{ fontSize: '22px' }}>Netease Playlist</span>
         </div>
         <Search
           enterButton={<RightOutlined />}
           onSearch={onSearch}
-          placeholder="此处粘贴 Playlist ID"
+          placeholder="Playlist ID"
         />
       </Sider>
       <Content style={{ background: 'none', }}>

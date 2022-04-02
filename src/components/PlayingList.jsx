@@ -28,14 +28,14 @@ function PlayingList({ dataSource, clearPlayingList }) {
           borderTopRightRadius: '5px',
         }}
       >
-        <Col span={20}>播放列表</Col>
+        <Col span={20}>Playing List</Col>
         <Col span={4} style={{ textAlign: 'right' }}>
           <Button
             ghost
             icon={<DeleteOutlined />}
             onClick={clearPlayingList}
           >
-            清空
+            Clear
           </Button>
         </Col>
       </Row>

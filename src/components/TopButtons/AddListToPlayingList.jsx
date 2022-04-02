@@ -20,7 +20,7 @@ class AddListToPlayingList extends Component {
         icon={<PlusOutlined />}
         onClick={this.handleClick}
       >
-        添加到播放列表
+        Add to Playing List
       </Button>
     );
   }

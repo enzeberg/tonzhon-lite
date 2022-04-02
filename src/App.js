@@ -55,7 +55,7 @@ function App(props) {
                       {
                         platforms.length === 0 && searchStatus === 'done' &&
                         <div className="white-card">
-                          未搜索到相关歌曲。
+                          No related songs were found.
                         </div>
                       }
                       {
