@@ -459,7 +459,7 @@ class Player extends Component {
 
 const platforms = {
   qq: 'QQ',
-  netease: 'Netease',
+  netease: 'NetEase',
   kuwo: 'Kuwo',
 };
 
