@@ -8,6 +8,7 @@ function TopButtons({ songs, playSongList }) {
   return (
     <>
       <Button
+        type="primary"
         icon={<CaretRightOutlined />}
         onClick={() => playSongList(songs)}
         style={{
