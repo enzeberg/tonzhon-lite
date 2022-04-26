@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import { DeleteOutlined } from '@ant-design/icons';
-import { AutoComplete, Input, Button } from 'antd';
+import { Input } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -21,54 +20,21 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { searchHistory } = this.props;
-
-    const searchHistoryOptions = [
-      {
-        label: (
-          <div
-            style={{
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              display: 'flex',
-            }}
-          >
-            <span>Search History</span>
-            <Button
-              icon={<DeleteOutlined />}
-              onClick={() => this.props.clearSearchHistory()}
-            />
-          </div>
-        ),
-        options: searchHistory.map(item => ({
-          value: item,
-        }))
-      }
-    ];
-
     return (
-      <AutoComplete
-        style={{ width: '100%' }}
-        options={searchHistoryOptions}
-        onSelect={this.onSearch}
-        defaultActiveFirstOption={false}
-      >
-        <Search
-          placeholder="Song | Album | Artist"
-          // defaultValue={keyword || ''}
-          // value={keyword || ''}
-          onSearch={this.onSearch}
-          enterButton
-        />
-      </AutoComplete>
+      <Search
+        placeholder="Song | Album | Artist"
+        // defaultValue={keyword || ''}
+        // value={keyword || ''}
+        onSearch={this.onSearch}
+        enterButton
+      />
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    // keyword: state.searchKeyword,
-    searchHistory: state.searchHistory,
+    keyword: state.searchKeyword,
   };
 }
 function mapDispatchToProps(dispatch) {
