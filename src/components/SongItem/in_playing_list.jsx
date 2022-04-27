@@ -54,7 +54,6 @@ class SongItem extends Component {
         }}
       >
         <Row
-          type="flex"
           align="middle"
           onClick={this.onRowClick}
           style={{

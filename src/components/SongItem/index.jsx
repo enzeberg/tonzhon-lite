@@ -35,7 +35,6 @@ class SongItem extends Component {
     return (
       <List.Item style={{ padding: '4px 10px' }}>
         <Row
-          type="flex"
           align="middle"
           style={{
             width: '100%',

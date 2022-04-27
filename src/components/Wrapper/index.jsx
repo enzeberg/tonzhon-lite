@@ -13,7 +13,7 @@ function Wrapper({ platform, pagination, buttons, children }) {
         marginTop: '10px',
       }}
     >
-      <Row type="flex" align="middle" style={{ marginBottom: '10px' }}>
+      <Row align="middle" style={{ marginBottom: '10px' }}>
         <Col span={8}>
           <img src={logo} alt={platform} />
         </Col>

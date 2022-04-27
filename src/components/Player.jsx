@@ -256,7 +256,7 @@ class Player extends Component {
           ref={(audio) => { this.audio = audio; }}
         />
 
-        <Row type="flex" align="middle" className="container" justify="space-around">
+        <Row align="middle" className="container" justify="space-around">
           <Col span={4}>
             <Button
               ghost
@@ -302,9 +302,7 @@ class Player extends Component {
           </Col>
           <Col span={14} style={{ paddingRight: 40 }}>
             <Row
-              type="flex"
               align="middle"
-              justify="space-between"
               style={{ height: 20 }}
             >
               {
@@ -416,7 +414,7 @@ class Player extends Component {
             </button>
           </Col>
           <Col span={3}>
-            <Row type="flex" align="middle">
+            <Row align="middle">
               <Col span={4}>
                 <button
                   className="in-player"

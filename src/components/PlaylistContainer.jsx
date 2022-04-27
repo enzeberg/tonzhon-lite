@@ -53,15 +53,14 @@ class PlaylistContainer extends Component {
     return (
       <>
         <Row
-          type="flex"
           align="middle"
           justify="space-between"
           style={{ marginBottom: '10px' }}
         >
-          <Col span={14} style={{ fontSize: '20px' }}>
+          <Col style={{ fontSize: '20px' }}>
             {playlistName}
           </Col>
-          <Col span={10} style={{ textAlign: 'right' }}>
+          <Col>
             {
               songs.length > 0 &&
               <TopButtons songs={songs} />

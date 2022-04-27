@@ -17,7 +17,7 @@ function TheHeader() {
         boxShadow: '0 1px 3px rgba(26,26,26,.1)',
       }}
     >
-      <Row type="flex" align="middle" className="container">
+      <Row align="middle" className="container">
         <Col span={5}>
           <Link to="/">
             <h1

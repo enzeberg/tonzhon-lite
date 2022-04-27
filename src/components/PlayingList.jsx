@@ -18,7 +18,6 @@ function PlayingList({ dataSource, clearPlayingList }) {
       }}
     >
       <Row
-        type="flex"
         align="middle"
         justify="space-between"
         style={{
@@ -28,8 +27,8 @@ function PlayingList({ dataSource, clearPlayingList }) {
           borderTopRightRadius: '5px',
         }}
       >
-        <Col span={20}>Playing List</Col>
-        <Col span={4} style={{ textAlign: 'right' }}>
+        <Col>Playing List</Col>
+        <Col>
           <Button
             ghost
             icon={<DeleteOutlined />}
