@@ -9,7 +9,6 @@ store.subscribe(() => {
   const { searchKeyword } = store.getState();
   if (searchKeyword !== lastKeyword) {
     lastKeyword = searchKeyword;
-    updateSearchHistory(searchKeyword);
     onSearch();
     let resultsResponded = 0;
     platforms.forEach((platform) => {
@@ -51,10 +50,6 @@ const onResultResponded = (platform, data) => {
 
 const searchEnded = () => {
   store.dispatch({ type: 'UPDATE_SEARCH_STATUS', data: 'done' });
-};
-
-const updateSearchHistory = (keyword) => {
-  store.dispatch({ type: 'UPDATE_SEARCH_HISTORY', data: keyword });
 };
 
 export default store;

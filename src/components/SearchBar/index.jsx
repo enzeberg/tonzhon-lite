@@ -42,9 +42,6 @@ function mapDispatchToProps(dispatch) {
     updateSearchKeyword: (keyword) => {
       dispatch({ type: 'UPDATE_SEARCH_KEYWORD', data: keyword });
     },
-    clearSearchHistory: () => {
-      dispatch({ type: 'CLEAR_SEARCH_HISTORY' });
-    },
   };
 }
 
