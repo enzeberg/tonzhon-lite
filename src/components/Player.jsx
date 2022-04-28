@@ -172,8 +172,8 @@ class Player extends Component {
       getSongSourceStatus: 'failed',
     }, () => {
       message.error('Failed to get song source');
-      this.playNext('forward');
-      message.info('Skipped');
+      // this.playNext('forward'); // Auto-skip is not safe.
+      // message.info('Skipped');
     });
   }
 
