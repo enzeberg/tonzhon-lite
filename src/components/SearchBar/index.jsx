@@ -22,11 +22,11 @@ class SearchBar extends Component {
   render() {
     return (
       <Search
-        placeholder="Song | Album | Artist"
         // defaultValue={keyword || ''}
         // value={keyword || ''}
         onSearch={this.onSearch}
         enterButton
+        loading={this.props.searchStatus === 'searching'}
       />
     );
   }
@@ -35,6 +35,7 @@ class SearchBar extends Component {
 function mapStateToProps(state) {
   return {
     keyword: state.searchKeyword,
+    searchStatus: state.searchStatus,
   };
 }
 function mapDispatchToProps(dispatch) {

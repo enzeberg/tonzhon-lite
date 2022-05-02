@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Spin } from 'antd';
+import { Layout } from 'antd';
 import { Switch, Route } from 'react-router-dom';
-import { useLocation } from 'react-router';
 
 import TheHeader from './components/TheHeader';
 import NeteasePlaylistPage from './components/NeteasePlaylistPage';
@@ -16,7 +14,6 @@ import './App.less';
 const { Content } = Layout;
 
 function App(props) {
-  useScrollbarResetter();
   let { searchStatus, searchResults } = props;
   return (
     <Layout>
@@ -58,9 +55,6 @@ function App(props) {
                           No related songs were found.
                         </div>
                       }
-                      {
-                        searchStatus === 'searching' && <Spin />
-                      }
                     </>
                   );
                 }
@@ -73,14 +67,6 @@ function App(props) {
       <Player />
     </Layout>
   );
-}
-
-function useScrollbarResetter() {
-  const { key } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [key]);
-  return null;
 }
 
 function mapStateToProps(state) {

@@ -9,7 +9,7 @@ store.subscribe(() => {
   const { searchKeyword } = store.getState();
   if (searchKeyword !== lastKeyword) {
     lastKeyword = searchKeyword;
-    onSearch();
+    whenSearchStarts();
     let resultsResponded = 0;
     platforms.forEach((platform) => {
       fetch(
@@ -23,11 +23,11 @@ store.subscribe(() => {
         .then(json => {
           const { success, data } = json;
           if (success && data.total > 0) {
-            onResultResponded(platform, data);
+            whenResultResponds(platform, data);
           }
           ++resultsResponded;
           if (resultsResponded === platforms.length) {
-            searchEnded();
+            whenSearchEnds();
           }
         })
         .catch(err => {
@@ -37,18 +37,18 @@ store.subscribe(() => {
   }
 });
 
-const onSearch = () => {
+const whenSearchStarts = () => {
   store.dispatch({ type: 'CLEAR_RESULTS' });
   store.dispatch({ type: 'UPDATE_SEARCH_STATUS', data: 'searching' });
 };
 
-const onResultResponded = (platform, data) => {
+const whenResultResponds = (platform, data) => {
   store.dispatch({
     type: 'INITIAL_SEARCH_RESULTS', platform, data
   });
 };
 
-const searchEnded = () => {
+const whenSearchEnds = () => {
   store.dispatch({ type: 'UPDATE_SEARCH_STATUS', data: 'done' });
 };
 
