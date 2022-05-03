@@ -10,7 +10,6 @@ import ArtistLinks from '../ArtistLinks';
 import MvLink from '../MvLink';
 import AddToPlayingList from './AddToPlayingList';
 import { buildSongLink, buildAlbumLink } from '../../utils/build_link';
-import './index.css';
 
 class SongItem extends Component {
   constructor(props) {
@@ -30,8 +29,8 @@ class SongItem extends Component {
   }
 
   render() {
-    const { song, currentSong } = this.props;
-    const { originalId, newId, platform, name, alias, mv, artists, album } = song;
+    const { song } = this.props;
+    const { originalId, platform, name, alias, mv, artists, album } = song;
     return (
       <List.Item style={{ padding: '4px 10px' }}>
         <Row
@@ -93,11 +92,6 @@ class SongItem extends Component {
               shape="circle"
               size="small"
               onClick={this.onPlayBtnClick}
-              className={
-                currentSong && currentSong.newId === newId
-                ? 'play-btn playing'
-                : 'play-btn'
-              }
               style={{
                 marginRight: '8px',
               }}
