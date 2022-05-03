@@ -7,7 +7,6 @@ import NeteasePlaylistPage from './components/NeteasePlaylistPage';
 import TopSongs from './components/TopSongs';
 import Result from './components/Result';
 import SearchWithURL from './components/SearchWithURL';
-import NotFound from './components/NotFound';
 import Player from './components/Player';
 import './App.less';
 
@@ -60,7 +59,6 @@ function App(props) {
                 }
               }
             />
-            <Route path="/*" component={NotFound} />
           </Switch>
         </div>
       </Content>
