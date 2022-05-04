@@ -6,12 +6,6 @@
 - Download songs
 - Import **complete** playlists from NetEase Music
 
-## Technology
-- React
-- Ant Design
-- Redux
-- React Router
-
 ## Run
     git clone https://github.com/enzeberg/tonzhon-lite.git
     cd tonzhon-lite
