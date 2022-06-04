@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { Input } from 'antd';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -15,7 +14,7 @@ class SearchBar extends Component {
     keyword = keyword.trim();
     if (keyword && keyword !== this.props.keyword) {
       this.props.updateSearchKeyword(keyword);
-      this.props.history.push(`/search?keyword=${keyword}`);
+      // this.props.history.push(`/search?keyword=${keyword}`);
     }
   }
 
@@ -46,4 +45,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar));
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

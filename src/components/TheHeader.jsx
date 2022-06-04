@@ -1,5 +1,4 @@
 import { Layout, Row, Col, Button } from 'antd';
-import { Link } from 'react-router-dom';
 import { GithubOutlined } from '@ant-design/icons';
 
 import SearchBar from './SearchBar';
@@ -19,18 +18,16 @@ function TheHeader() {
     >
       <Row align="middle" className="container">
         <Col span={5}>
-          <Link to="/">
-            <h1
-              style={{
-                display: 'inline',
-                color: themeColor,
-                fontWeight: 360,
-                fontSize: '24px',
-              }}
-            >
-              Tonzhon Lite
-            </h1>
-          </Link>
+          <h1
+            style={{
+              display: 'inline',
+              color: themeColor,
+              fontWeight: 360,
+              fontSize: '24px',
+            }}
+          >
+            Tonzhon Lite
+          </h1>
         </Col>
         <Col span={14}>
           <SearchBar />
