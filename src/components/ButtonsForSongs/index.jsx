@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import AddListToPlayingList from './AddListToPlayingList';
 
-function TopButtons({ songs, playSongList }) {
+function ButtonsForSongs({ songs, playSongList }) {
   return (
     <>
       <Button
@@ -31,4 +31,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(TopButtons);
+export default connect(null, mapDispatchToProps)(ButtonsForSongs);

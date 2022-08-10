@@ -13,7 +13,6 @@ function SongList({ songs, showPlatform }) {
           showPlatform={showPlatform}
         />
       )}
-      className="song-list"
     />
   );
 }

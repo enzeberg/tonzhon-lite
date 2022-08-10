@@ -38,7 +38,7 @@ class SongItem extends Component {
       <List.Item
         className={
           currentSong && currentSong.newId === song.newId
-          ? 'playing' : ''
+          ? 'item-in-playing-list playing' : 'item-in-playing-list'
         }
         extra={
           <Button

@@ -32,7 +32,10 @@ class SongItem extends Component {
     const { song } = this.props;
     const { originalId, platform, name, alias, mv, artists, album } = song;
     return (
-      <List.Item style={{ padding: '4px 10px' }}>
+      <List.Item
+        className="song-item"
+        style={{ padding: '4px 10px' }}
+      >
         <Row
           align="middle"
           style={{

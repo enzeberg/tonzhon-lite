@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Row, Col, Spin } from 'antd';
 
 import SongList from './SongList';
-import TopButtons from './TopButtons';
+import ButtonsForSongs from './ButtonsForSongs';
 
 class PlaylistContainer extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class PlaylistContainer extends Component {
           <Col>
             {
               songs.length > 0 &&
-              <TopButtons songs={songs} />
+              <ButtonsForSongs songs={songs} />
             }
           </Col>
         </Row>

@@ -39,7 +39,6 @@ function PlayingList({ dataSource, clearPlayingList }) {
         </Col>
       </Row>
       <List
-        id="playing-list"
         itemLayout="horizontal"
         dataSource={dataSource}
         renderItem={song => (
@@ -51,32 +50,6 @@ function PlayingList({ dataSource, clearPlayingList }) {
           height: '280px',
         }}
       />
-      <style jsx="true">{`
-          #playing-list::-webkit-scrollbar {
-            background-color: #222;
-            width: 7px;
-            border-radius: 10px;
-          }
-          #playing-list::-webkit-scrollbar-thumb {
-            background-color: #999;
-            border-radius: 10px;
-            /* width: 5px; */
-          }
-          #playing-list::-webkit-scrollbar-track {
-            display: none;
-            border-radius: 10px;
-          }
-          #playing-list::-webkit-scrollbar-track-piece {
-            border-radius: 10px;
-          }
-          #playing-list li:hover {
-            cursor: pointer;
-            background-color: rgb(50, 50, 50);
-          }
-          #playing-list li.playing {
-            background-color: rgb(60, 60, 60);
-          }
-        `}</style>
     </div>
   );
 }
