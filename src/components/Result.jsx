@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { Pagination } from 'antd';
 import { connect } from 'react-redux';
 
 import SongList from './SongList';
@@ -7,43 +6,19 @@ import Wrapper from './Wrapper';
 import ButtonsForSongs from './ButtonsForSongs';
 
 class Result extends Component {
-  constructor(props) {
-    super(props);
-    this.onPageChange = this.onPageChange.bind(this);
-  }
-
-  onPageChange(page) {
-    const { keyword, platform, onResultResponded } = this.props;
-    fetch(`/api/search?keyword=${keyword}&platform=${platform}&page=${page}`)
-      .then(res => res.json())
-      .then(json => {
-        const { success, data } = json;
-        if (success && data.total > 0) {
-          onResultResponded(platform, data);
-        }
-      })
-      .catch(err => {
-        console.log('err ', err);
-      });
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     const { platform, data } = this.props;
-    const { songs, total } = data;
+    const { songs } = data;
 
     return (
       <Wrapper
         platform={platform}
         buttons={
           <ButtonsForSongs songs={songs} />
-        }
-        pagination={
-          <Pagination
-            simple
-            onChange={this.onPageChange}
-            defaultPageSize={8}
-            total={total}
-          />
         }
       >
         <SongList songs={songs} />

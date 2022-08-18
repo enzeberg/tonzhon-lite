@@ -4,7 +4,7 @@ import neteaseMusicLogo from './images/netease_32.ico';
 import qqMusicLogo from './images/qq_32.ico';
 import kuwoMusicLogo from './images/kuwo_32.ico';
 
-function Wrapper({ platform, pagination, buttons, children }) {
+function Wrapper({ platform, buttons, children }) {
   const logo = logos[platform];
   return (
     <div
@@ -13,14 +13,11 @@ function Wrapper({ platform, pagination, buttons, children }) {
         marginTop: '10px',
       }}
     >
-      <Row align="middle" style={{ marginBottom: '10px' }}>
-        <Col span={8}>
+      <Row align="middle" justify="space-between" style={{ marginBottom: '10px' }}>
+        <Col>
           <img src={logo} alt={platform} />
         </Col>
-        <Col span={8}>
-          {pagination}
-        </Col>
-        <Col span={8} style={{ textAlign: 'right' }}>
+        <Col style={{ textAlign: 'right' }}>
           {buttons}
         </Col>
       </Row>

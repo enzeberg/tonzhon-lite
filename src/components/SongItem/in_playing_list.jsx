@@ -62,10 +62,10 @@ class SongItem extends Component {
             padding: '5px 10px',
           }}
         >
-          <Col span={12} className="nowrap">
+          <Col span={12} className="ellipsis">
             {name}
           </Col>
-          <Col span={10} className="nowrap">
+          <Col span={10} className="ellipsis">
             <Artists artists={artists} platform={platform} />
           </Col>
           <Col span={2}>

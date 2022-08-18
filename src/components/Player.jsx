@@ -308,7 +308,7 @@ class Player extends Component {
               {
                 currentSong &&
                   <>
-                    <Col span={7} className="nowrap">
+                    <Col span={7} className="ellipsis">
                       <a
                         href={
                           buildSongLink(currentSong.platform, currentSong.originalId)
@@ -335,7 +335,7 @@ class Player extends Component {
                         />
                       }
                     </Col>
-                    <Col span={6} className="nowrap">
+                    <Col span={6} className="ellipsis">
                       {
                         currentSong.artists &&
                         <ArtistLinks

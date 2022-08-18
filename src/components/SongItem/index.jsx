@@ -43,7 +43,7 @@ class SongItem extends Component {
             fontSize: 14,
           }}
         >
-          <Col span={8} className="nowrap">
+          <Col span={8} className="ellipsis">
             <a
               href={buildSongLink(platform, originalId)}
               title={
@@ -53,18 +53,21 @@ class SongItem extends Component {
               rel="noreferrer"
             >
               <span>{name}</span>
-              <span style={{ color: '#999' }}>
-                {alias && ` - ${alias}`}
-              </span>
+              {
+                alias &&
+                <span className="song-alias">
+                  {alias}
+                </span>
+              }
             </a>
           </Col>
           <Col span={1}>
             {mv && <MvLink platform={platform} id={mv} />}
           </Col>
-          <Col span={6} className="nowrap">
+          <Col span={6} className="ellipsis">
             <ArtistLinks platform={platform} artists={artists} />
           </Col>
-          <Col span={6} className="nowrap">
+          <Col span={6} className="ellipsis">
             <a
               href={buildAlbumLink(platform, album.id)}
               target="_blank"
