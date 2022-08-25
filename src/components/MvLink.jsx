@@ -8,7 +8,6 @@ function MvLink({ platform, id, color }) {
       href={buildMvLink(platform, id)}
       target="_blank"
       rel="noreferrer"
-      title="MV"
     >
       <MdOndemandVideo
         style={{

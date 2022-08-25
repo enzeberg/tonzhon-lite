@@ -1,30 +1,22 @@
-import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import SongList from './SongList';
 import Wrapper from './Wrapper';
 import ButtonsForSongs from './ButtonsForSongs';
 
-class Result extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+function Result({ platform, data }) {
+  const { songs } = data;
 
-  render() {
-    const { platform, data } = this.props;
-    const { songs } = data;
-
-    return (
-      <Wrapper
-        platform={platform}
-        buttons={
-          <ButtonsForSongs songs={songs} />
-        }
-      >
-        <SongList songs={songs} />
-      </Wrapper>
-    );
-  }
+  return (
+    <Wrapper
+      platform={platform}
+      buttons={
+        <ButtonsForSongs songs={songs} />
+      }
+    >
+      <SongList songs={songs} />
+    </Wrapper>
+  );
 }
 
 function mapStateToProps(state) {

@@ -1,12 +1,26 @@
 @import '~antd/dist/antd.less';
 
-.container {
-  width: 1000px;
-  margin: 0 auto;
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  box-shadow: 0 1px 3px rgba(26,26,26,.1);
 }
 
 a {
   color: black;
+}
+
+#site-name {
+  display: inline;
+  color: orange;
+  font-weight: 360;
+  font-size: 24px;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
 }
 
 .ellipsis {
@@ -45,6 +59,9 @@ button.in-player:hover {
   color: rgb(200,200,200);
 }
 
+.song-item {
+  padding: 4px 10px;
+}
 .song-item:hover {
   background-color: #f4f4f4;
 }

@@ -32,10 +32,7 @@ class SongItem extends Component {
     const { song } = this.props;
     const { originalId, platform, name, alias, mv, artists, album } = song;
     return (
-      <List.Item
-        className="song-item"
-        style={{ padding: '4px 10px' }}
-      >
+      <List.Item className="song-item">
         <Row
           align="middle"
           style={{
@@ -46,9 +43,6 @@ class SongItem extends Component {
           <Col span={8} className="ellipsis">
             <a
               href={buildSongLink(platform, originalId)}
-              title={
-                `${name}${alias ? ` - ${alias}` : ''}`
-              }
               target="_blank"
               rel="noreferrer"
             >
@@ -72,7 +66,6 @@ class SongItem extends Component {
               href={buildAlbumLink(platform, album.id)}
               target="_blank"
               rel="noreferrer"
-              title={album.name}
             >
               {album.name}
             </a>

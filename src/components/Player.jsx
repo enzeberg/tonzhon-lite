@@ -315,7 +315,6 @@ class Player extends Component {
                         }
                         target="_blank"
                         rel="noreferrer"
-                        title={currentSong.name}
                         style={{
                           color: 'white',
                           marginRight: 4,
@@ -443,7 +442,6 @@ class Player extends Component {
               ghost
               icon={<UnorderedListOutlined />}
               onClick={this.onPlayingListBtnClick}
-              title="Playing List"
             />
           </Col>
         </Row>

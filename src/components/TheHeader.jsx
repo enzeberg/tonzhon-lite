@@ -2,30 +2,15 @@ import { Layout, Row, Col, Button } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 
 import SearchBar from './SearchBar';
-import { themeColor } from '../config';
 
 const { Header } = Layout;
 
 function TheHeader() {
   return (
-    <Header
-      style={{
-        position: 'fixed',
-        width: '100%',
-        zIndex: 2,
-        boxShadow: '0 1px 3px rgba(26,26,26,.1)',
-      }}
-    >
+    <Header>
       <Row align="middle" className="container">
         <Col span={5}>
-          <h1
-            style={{
-              display: 'inline',
-              color: themeColor,
-              fontWeight: 360,
-              fontSize: '24px',
-            }}
-          >
+          <h1 id="site-name">
             Tonzhon Lite
           </h1>
         </Col>

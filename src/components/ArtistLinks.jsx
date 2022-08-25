@@ -7,7 +7,6 @@ function ArtistLinks({ platform, artists, color }) {
       href={buildArtistLink(platform, artist.id)}
       target="_blank"
       rel="noreferrer"
-      title={artist.name}
       style={{
         color,
       }}
