@@ -10,11 +10,6 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons';
 import { Row, Col, Slider, Button, message } from 'antd';
-import {
-  MdRepeat as LoopIcon,
-  MdRepeatOne as SingleIcon,
-  MdShuffle as ShuffleIcon
-} from 'react-icons/md';
 import { FiVolume2 as VolumeIcon, FiVolumeX as MuteIcon } from 'react-icons/fi';
 
 import ArtistLinks from './ArtistLinks';
@@ -23,19 +18,11 @@ import PlayingList from './PlayingList';
 import toMinAndSec from '../utils/to_min_and_sec';
 import { buildSongLink } from '../utils/build_link';
 
-const playModes = ['loop', 'single', 'shuffle'];
-const playModeIcons = {
-  loop: <LoopIcon className="icon-in-player" />,
-  single: <SingleIcon className="icon-in-player" />,
-  shuffle: <ShuffleIcon className="icon-in-player" />,
-};
-
 class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
       playerStatus: 'pausing',
-      playMode: localStorage.getItem('playMode') || 'loop',
       muted: false,
       volume: localStorage.getItem('volume')
               ? Number(localStorage.getItem('volume')) : 0.6,
@@ -50,7 +37,6 @@ class Player extends Component {
     this.onPlayProgressSliderChange = this.onPlayProgressSliderChange.bind(this);
     this.onVolumeBtnClick = this.onVolumeBtnClick.bind(this);
     this.onVolumeSliderChange = this.onVolumeSliderChange.bind(this);
-    this.onPlayModeBtnClick = this.onPlayModeBtnClick.bind(this);
     this.onPlayingListBtnClick = this.onPlayingListBtnClick.bind(this);
   }
 
@@ -203,22 +189,7 @@ class Player extends Component {
       this.pause();
     }
     const { currentSong, playingList } = this.props;
-    const { playMode } = this.state;
-    if (playMode === 'single' || playingList.length === 1) {
-      this.audio.currentTime = 0;
-      this.play();
-    } else {
-      this.props.changePlayIndex(currentSong, playingList, playMode, direction);
-    }
-  }
-
-  onPlayModeBtnClick() {
-    const i = playModes.indexOf(this.state.playMode);
-    const mode = playModes[i + 1] || playModes[0];
-    localStorage.setItem('playMode', mode);
-    this.setState({
-      playMode: mode,
-    });
+    this.props.changePlayIndex(currentSong, playingList, direction);
   }
 
   onPlayingListBtnClick() {
@@ -300,7 +271,7 @@ class Player extends Component {
               onClick={() => this.playNext('forward')}
             />
           </Col>
-          <Col span={14} style={{ paddingRight: 40 }}>
+          <Col span={14}>
             <Row
               align="middle"
               style={{ height: 20 }}
@@ -391,7 +362,7 @@ class Player extends Component {
               style={{ margin: '8px 0' }}
             />
           </Col>
-          <Col span={1}>
+          <Col span={2} style={{ paddingLeft: 30 }}>
             <Button
               ghost
               icon={<DownloadOutlined />}
@@ -401,16 +372,6 @@ class Player extends Component {
               download
               disabled={songSource === null}
             />
-          </Col>
-          <Col span={1} style={{ paddingLeft: 3 }}>
-            <button
-              className="in-player"
-              onClick={this.onPlayModeBtnClick}
-            >
-              {
-                playModeIcons[this.state.playMode]
-              }
-            </button>
           </Col>
           <Col span={3}>
             <Row align="middle">
@@ -468,21 +429,14 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    changePlayIndex: (currentSong, playingList, playMode, direction) => {
+    changePlayIndex: (currentSong, playingList, direction) => {
       let nextPlayIndex;
       const currentIndex = playingList.findIndex(song =>
         song.newId === currentSong.newId);
-      if (playMode === 'loop') {
-        if (direction === 'forward') {
-          nextPlayIndex = playingList[currentIndex + 1] ? currentIndex + 1 : 0;
-        } else if (direction === 'backward') {
-          nextPlayIndex = playingList[currentIndex - 1] ? currentIndex - 1 :
-            playingList.length - 1;
-        }
-      } else if (playMode === 'shuffle') {
-        do {
-          nextPlayIndex = Math.floor(Math.random() * playingList.length);
-        } while (nextPlayIndex === currentIndex);
+      if (direction === 'forward') {
+        nextPlayIndex = playingList[currentIndex + 1] ? currentIndex + 1 : undefined;
+      } else if (direction === 'backward') {
+        nextPlayIndex = playingList[currentIndex - 1] ? currentIndex - 1 : undefined;
       }
       if (nextPlayIndex !== undefined) {
         dispatch({ type: 'UPDATE_PLAY_INDEX', data: nextPlayIndex });
