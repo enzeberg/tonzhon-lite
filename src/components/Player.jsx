@@ -212,16 +212,7 @@ class Player extends Component {
     const total = toMinAndSec(songDuration);
     
     return (
-      <div
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          padding: '8px 0',
-          width: '100%',
-          backgroundColor: '#222',
-          color: 'white',
-        }}
-      >
+      <div id="player">
         <audio
           src={songSource}
           ref={(audio) => { this.audio = audio; }}
@@ -281,16 +272,12 @@ class Player extends Component {
                   <>
                     <Col span={7} className="ellipsis">
                       <a
+                        id="song-name-in-player"
                         href={
                           buildSongLink(currentSong.platform, currentSong.originalId)
                         }
                         target="_blank"
                         rel="noreferrer"
-                        style={{
-                          color: 'white',
-                          marginRight: 4,
-                          fontSize: 16,
-                        }}
                       >
                         <strong>{currentSong.name}</strong>
                       </a>

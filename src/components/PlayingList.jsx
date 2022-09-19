@@ -7,25 +7,15 @@ import ItemInPlayingList from './SongItem/in_playing_list';
 function PlayingList({ dataSource, clearPlayingList }) {
   return (
     <div
+      id="playing-list"
       style={{
-        position: 'absolute',
-        bottom: '64px',
         right: `${(document.body.clientWidth - 1000) / 2}px`,
-        width: '600px',
-        borderTopLeftRadius: '5px',
-        borderTopRightRadius: '5px',
-        background: 'rgb(70,70,70)',
       }}
     >
       <Row
+        id="playing-list-header"
         align="middle"
         justify="space-between"
-        style={{
-          padding: '10px',
-          background: '#222',
-          borderTopLeftRadius: '5px',
-          borderTopRightRadius: '5px',
-        }}
       >
         <Col>Playing List</Col>
         <Col>
@@ -39,16 +29,13 @@ function PlayingList({ dataSource, clearPlayingList }) {
         </Col>
       </Row>
       <List
+        id="playing-list-content"
         itemLayout="horizontal"
         dataSource={dataSource}
         renderItem={song => (
           <ItemInPlayingList song={song} />
         )}
-        style={{
-          color: 'white',
-          overflow: 'auto',
-          height: '280px',
-        }}
+        
       />
     </div>
   );
