@@ -3,6 +3,7 @@ import { Row, Col, List, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
+import reduceArtists from '../../utils/reduce_artists';
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
@@ -66,10 +67,7 @@ class SongItem extends Component {
           </Col>
           <Col span={10} className="ellipsis">
             {
-              artists.map(artist => artist.name)
-                .reduce((accumulator, currentValue) =>
-                  accumulator + ', ' + currentValue
-                )
+              reduceArtists(artists)
             }
           </Col>
           <Col span={2}>

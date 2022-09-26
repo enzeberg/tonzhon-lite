@@ -12,11 +12,10 @@ import {
 import { Row, Col, Slider, Button, message } from 'antd';
 import { FiVolume2 as VolumeIcon, FiVolumeX as MuteIcon } from 'react-icons/fi';
 
-import ArtistLinks from './ArtistLinks';
 import MvLink from './MvLink';
 import PlayingList from './PlayingList';
 import toMinAndSec from '../utils/to_min_and_sec';
-import { buildSongLink } from '../utils/build_link';
+import reduceArtists from '../utils/reduce_artists';
 
 class Player extends Component {
   constructor(props) {
@@ -271,16 +270,7 @@ class Player extends Component {
                 currentSong &&
                   <>
                     <Col span={7} className="ellipsis">
-                      <a
-                        id="song-name-in-player"
-                        href={
-                          buildSongLink(currentSong.platform, currentSong.originalId)
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <strong>{currentSong.name}</strong>
-                      </a>
+                      <strong id="song-name-in-player">{currentSong.name}</strong>
                     </Col>
                     <Col span={2}>
                       {
@@ -295,11 +285,7 @@ class Player extends Component {
                     <Col span={6} className="ellipsis">
                       {
                         currentSong.artists &&
-                        <ArtistLinks
-                          artists={currentSong.artists}
-                          platform={currentSong.platform}
-                          color="white"
-                        />
+                        reduceArtists(currentSong.artists)
                       }
                     </Col>
                     <Col

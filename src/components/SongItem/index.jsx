@@ -6,10 +6,9 @@ import { connect } from 'react-redux';
 import neteaseMusicLogo from './images/netease_16.ico';
 import qqMusicLogo from './images/qq_16.ico';
 import kuwoMusicLogo from './images/kuwo_16.ico';
-import ArtistLinks from '../ArtistLinks';
 import MvLink from '../MvLink';
 import AddToPlayingList from './AddToPlayingList';
-import { buildSongLink, buildAlbumLink } from '../../utils/build_link';
+import reduceArtists from '../../utils/reduce_artists';
 
 class SongItem extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class SongItem extends Component {
 
   render() {
     const { song } = this.props;
-    const { originalId, platform, name, alias, mv, artists, album } = song;
+    const { platform, name, alias, mv, artists, album } = song;
     return (
       <List.Item className="song-item">
         <Row
@@ -41,34 +40,24 @@ class SongItem extends Component {
           }}
         >
           <Col span={8} className="ellipsis">
-            <a
-              href={buildSongLink(platform, originalId)}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span>{name}</span>
-              {
-                alias &&
-                <span className="song-alias">
-                  {alias}
-                </span>
-              }
-            </a>
+            <span>{name}</span>
+            {
+              alias &&
+              <span className="song-alias">
+                {alias}
+              </span>
+            }
           </Col>
           <Col span={1}>
             {mv && <MvLink platform={platform} id={mv} />}
           </Col>
           <Col span={6} className="ellipsis">
-            <ArtistLinks platform={platform} artists={artists} />
+            {
+              reduceArtists(artists)
+            }
           </Col>
           <Col span={6} className="ellipsis">
-            <a
-              href={buildAlbumLink(platform, album.id)}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {album.name}
-            </a>
+            {album.name}
           </Col>
           <Col span={1}>
             {
