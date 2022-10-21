@@ -6,7 +6,6 @@ import {
   StepBackwardOutlined,
   LoadingOutlined,
   PauseOutlined,
-  DownloadOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons';
 import { Row, Col, Slider, Button, message } from 'antd';
@@ -34,7 +33,6 @@ class Player extends Component {
     
     this.onCentralBtnClick = this.onCentralBtnClick.bind(this);
     this.onPlayProgressSliderChange = this.onPlayProgressSliderChange.bind(this);
-    this.onVolumeBtnClick = this.onVolumeBtnClick.bind(this);
     this.onVolumeSliderChange = this.onVolumeSliderChange.bind(this);
     this.onPlayingListBtnClick = this.onPlayingListBtnClick.bind(this);
   }
@@ -167,16 +165,6 @@ class Player extends Component {
     this.setState({ playProgress: value });
   }
 
-  onVolumeBtnClick() {
-    if (this.state.muted) {
-      this.audio.muted = false;
-      this.setState({ muted: false });
-    } else {
-      this.audio.muted = true;
-      this.setState({ muted: true });
-    }
-  }
-
   onVolumeSliderChange(value) {
     this.audio.volume = value;
     this.setState({ volume: value });
@@ -261,7 +249,7 @@ class Player extends Component {
               onClick={() => this.playNext('forward')}
             />
           </Col>
-          <Col span={14}>
+          <Col span={16} style={{ paddingRight: 37 }}>
             <Row
               align="middle"
               style={{ height: 20 }}
@@ -335,30 +323,14 @@ class Player extends Component {
               style={{ margin: '8px 0' }}
             />
           </Col>
-          <Col span={2} style={{ paddingLeft: 30 }}>
-            <Button
-              ghost
-              icon={<DownloadOutlined />}
-              shape="circle"
-              href={songSource}
-              target="_blank"
-              download
-              disabled={songSource === null}
-            />
-          </Col>
           <Col span={3}>
             <Row align="middle">
               <Col span={4}>
-                <button
-                  className="in-player"
-                  onClick={this.onVolumeBtnClick}
-                >
-                  {
-                    this.state.muted
-                    ? <MuteIcon className="icon-in-player" />
-                    : <VolumeIcon className="icon-in-player" />
-                  }
-                </button>
+                {
+                  this.state.muted
+                  ? <MuteIcon className="icon-in-player" />
+                  : <VolumeIcon className="icon-in-player" />
+                }
               </Col>
               <Col span={20}>
                 <Slider
