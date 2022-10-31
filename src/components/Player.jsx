@@ -8,8 +8,8 @@ import {
   PauseOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons';
-import { Row, Col, Slider, Button, message } from 'antd';
-import { FiVolume2 as VolumeIcon, FiVolumeX as MuteIcon } from 'react-icons/fi';
+import { Row, Col, Slider, Button, message, Space } from 'antd';
+import { FiVolume2 as VolumeIcon } from 'react-icons/fi';
 
 import MvLink from './MvLink';
 import PlayingList from './PlayingList';
@@ -21,7 +21,6 @@ class Player extends Component {
     super(props);
     this.state = {
       playerStatus: 'pausing',
-      muted: false,
       volume: localStorage.getItem('volume')
               ? Number(localStorage.getItem('volume')) : 0.6,
       playingListVisible: false,
@@ -249,7 +248,7 @@ class Player extends Component {
               onClick={() => this.playNext('forward')}
             />
           </Col>
-          <Col span={16} style={{ paddingRight: 37 }}>
+          <Col span={15} style={{ paddingRight: 37 }}>
             <Row
               align="middle"
               style={{ height: 20 }}
@@ -317,31 +316,26 @@ class Player extends Component {
                 songDuration ? parseInt(songDuration) : 0
               }
               value={playProgress}
-              tipFormatter={(value) => toMinAndSec(value)}
               onChange={this.onPlayProgressSliderChange}
               disabled={!songSource}
               style={{ margin: '8px 0' }}
             />
           </Col>
-          <Col span={3}>
-            <Row align="middle">
-              <Col span={4}>
-                {
-                  this.state.muted
-                  ? <MuteIcon className="icon-in-player" />
-                  : <VolumeIcon className="icon-in-player" />
-                }
-              </Col>
-              <Col span={20}>
-                <Slider
-                  min={0}
-                  max={1}
-                  step={0.01}
-                  defaultValue={this.state.volume}
-                  onChange={this.onVolumeSliderChange}
-                />
-              </Col>
-            </Row>
+          <Col span={4}>
+            <Space size={2}>
+              <VolumeIcon className="icon-in-player" />
+              <Slider
+                min={0}
+                max={1}
+                step={0.01}
+                defaultValue={this.state.volume}
+                onChange={this.onVolumeSliderChange}
+                style={{
+                  width: 100,
+                  margin: 0,
+                }}
+              />
+            </Space>
           </Col>
           <Col span={1} style={{ textAlign: 'right' }}>
             <Button
