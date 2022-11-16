@@ -1,10 +1,10 @@
 {
   "name": "tonzhon-lite",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@craco/craco": "^6.4.3",
+    "@craco/craco": "^7.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -13,7 +13,6 @@
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
     "react-scripts": "^5.0.1",
     "redux": "^4.2.0",

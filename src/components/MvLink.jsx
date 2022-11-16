@@ -1,4 +1,4 @@
-import { MdOndemandVideo } from 'react-icons/md';
+import { Tag } from 'antd';
 
 function buildMvLink(platform, id) {
   const qq = 'https://y.qq.com/n/ryqq/';
@@ -19,19 +19,15 @@ function buildMvLink(platform, id) {
 
 function MvLink({ platform, id, color }) {
   return (
-    <a
-      href={buildMvLink(platform, id)}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <MdOndemandVideo
-        style={{
-          display: 'block',
-          fontSize: '20px',
-          color,
-        }}
-      />
-    </a>
+    <Tag>
+      <a
+        href={buildMvLink(platform, id)}
+        target="_blank"
+        rel="noreferrer"
+      >
+        MV
+      </a>
+    </Tag>
   );
 };
 
