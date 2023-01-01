@@ -62,11 +62,11 @@ class SongItem extends Component {
           <Col span={1}>
             {
               this.props.showPlatform &&
-                <img
-                  src={logos[platform]}
-                  alt={platform}
-                  style={{ display: 'block' }}
-                />
+              <img
+                src={logos[platform]}
+                alt={platform}
+                style={{ display: 'block' }}
+              />
             }
           </Col>
           <Col

@@ -1,18 +1,16 @@
-import { Layout, Row, Col, Button } from 'antd';
+import { Row, Col, Button } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 
 import SearchBar from './SearchBar';
 
-const { Header } = Layout;
-
 function TheHeader() {
   return (
-    <Header>
+    <header>
       <Row align="middle" className="container">
         <Col span={5}>
-          <h1 id="site-name">
+          <span id="site-name">
             Tonzhon Lite
-          </h1>
+          </span>
         </Col>
         <Col span={14}>
           <SearchBar />
@@ -29,7 +27,7 @@ function TheHeader() {
           </Button>
         </Col>
       </Row>
-    </Header>
+    </header>
   );
 }
 

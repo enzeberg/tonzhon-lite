@@ -26,6 +26,9 @@ class SearchBar extends Component {
         onSearch={this.onSearch}
         enterButton
         loading={this.props.searchStatus === 'searching'}
+        style={{
+          display: 'inline',
+        }}
       />
     );
   }

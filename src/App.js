@@ -1,49 +1,49 @@
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
+import { ConfigProvider } from 'antd';
 
 import TheHeader from './components/TheHeader';
 import TopSongs from './components/TopSongs';
 import Result from './components/Result';
 import Player from './components/Player';
-import './App.less';
-
-const { Content } = Layout;
+import './App.css';
 
 function App(props) {
   let { searchStatus, searchResults } = props;
   const platforms = Object.keys(searchResults);
   return (
-    <Layout>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: 'orange',
+        },
+      }}
+    >
       <TheHeader />
-      <Content>
-        <div
-          className="container"
-          style={{
-            marginTop: 60,
-            marginBottom: 74,
-            minHeight: 800,
-          }}
-        >
-          <TopSongs />
-          {
-            platforms.map((platform) => (
-              <Result
-                key={platform}
-                platform={platform}
-                data={searchResults[platform]}
-              />
-            ))
-          }
-          {
-            platforms.length === 0 && searchStatus === 'done' &&
-            <div className="white-card">
-              No related songs were found.
-            </div>
-          }
-        </div>
-      </Content>
+      <div
+        className="container"
+        style={{
+          minHeight: 800,
+        }}
+      >
+        <TopSongs />
+        {
+          platforms.map((platform) => (
+            <Result
+              key={platform}
+              platform={platform}
+              data={searchResults[platform]}
+            />
+          ))
+        }
+        {
+          platforms.length === 0 && searchStatus === 'done' &&
+          <div className="white-card">
+            No related songs were found.
+          </div>
+        }
+      </div>
       <Player />
-    </Layout>
+    </ConfigProvider>
   );
 }
 

@@ -1,7 +1,18 @@
-@import '~antd/dist/antd.less';
+body {
+  margin: 0;
+}
+
+#root {
+  background-color: whitesmoke;
+  padding-top: 65px;
+  padding-bottom: 77px;
+}
 
 header {
+  padding: 10px;
+  background-color: white;
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 2;
   box-shadow: 0 1px 3px rgba(26,26,26,.1);
@@ -12,7 +23,6 @@ a {
 }
 
 #site-name {
-  display: inline;
   color: orange;
   font-weight: 360;
   font-size: 24px;
@@ -85,9 +95,6 @@ a {
   color: rgb(200,200,200);
 }
 
-.song-item {
-  padding: 4px 10px;
-}
 .song-item:hover {
   background-color: #f4f4f4;
 }
