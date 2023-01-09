@@ -19,7 +19,7 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerStatus: 'pausing',
+      playerStatus: 'paused',
       playingListVisible: false,
       getSongSourceStatus: 'notYet',
       songSource: null,
@@ -87,7 +87,7 @@ class Player extends Component {
 
   onCentralBtnClick() {
     const { playerStatus } = this.state;
-    if (playerStatus === 'pausing') {
+    if (playerStatus === 'paused') {
       if (this.state.songSource) {
         this.play();
       } else {
@@ -115,7 +115,7 @@ class Player extends Component {
   pause() {
     this.audio.pause();
     this.setState({
-      playerStatus: 'pausing',
+      playerStatus: 'paused',
     });
   }
 

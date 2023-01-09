@@ -17,17 +17,15 @@ function buildMvLink(platform, id) {
   }
 }
 
-function MvLink({ platform, id, color }) {
+function MvLink({ platform, id }) {
   return (
-    <Tag>
-      <a
-        href={buildMvLink(platform, id)}
-        target="_blank"
-        rel="noreferrer"
-      >
-        MV
-      </a>
-    </Tag>
+    <a
+      href={buildMvLink(platform, id)}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <Tag>MV</Tag>
+    </a>
   );
 };
 
